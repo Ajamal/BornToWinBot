@@ -1,7 +1,7 @@
 BornToWinBot
 ============
 
-Welcome the the repository. Let's make this bot win!
+Welcome to the the repository. Let's make this bot win!
 
 We will be focusing on making our Bot learn as discussed. We will also work on defence strategies.
 
