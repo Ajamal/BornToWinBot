@@ -1,0 +1,36 @@
+﻿Build started 23/09/2014 2:15:18 PM.
+     1>Project "C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\StarcraftBuildOrderSearch.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /IC:\Users\Owner\Downloads\BOOST\boost_1_56_0 /I"C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D NOMINMAX /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Source\starcraftsearch\StarcraftData.cpp ..\Source\starcraftsearch\test.cpp
+         test.cpp
+         StarcraftData.cpp
+         Generating Code...
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /fo"Debug\StarcraftBuildOrderSearch.exe.embed.manifest.res" Debug\StarcraftBuildOrderSearch_manifest.rc 
+         Microsoft (R) Windows (R) Resource Compiler Version 6.1.7600.16385
+         
+         Copyright (C) Microsoft Corporation.  All rights reserved.
+         
+         
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Debug\StarcraftBuildOrderSearch.exe" /INCREMENTAL /NOLOGO "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/BWAPId.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/BWTAd.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/tinyxmld.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/CGAL-vc90-mt-gd.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/libboost_thread-vc90-mt-gd-1_40.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/gmp-vc90-mt-gd.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/mpfr-vc90-mt-gd.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\StarcraftBuildOrderSearch.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Debug\StarcraftBuildOrderSearch.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Debug\StarcraftBuildOrderSearch.lib" /MACHINE:X86 Debug\StarcraftBuildOrderSearch.exe.embed.manifest.res
+         Debug\StarcraftData.obj
+         Debug\test.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\StarcraftBuildOrderSearch.exe.embed.manifest" /manifest Debug\StarcraftBuildOrderSearch.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /fo"Debug\StarcraftBuildOrderSearch.exe.embed.manifest.res" Debug\StarcraftBuildOrderSearch_manifest.rc 
+         Microsoft (R) Windows (R) Resource Compiler Version 6.1.7600.16385
+         
+         Copyright (C) Microsoft Corporation.  All rights reserved.
+         
+         
+       LinkEmbedManifest:
+         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Debug\StarcraftBuildOrderSearch.exe" /INCREMENTAL /NOLOGO "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/BWAPId.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/BWTAd.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/tinyxmld.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/CGAL-vc90-mt-gd.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/libboost_thread-vc90-mt-gd-1_40.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/gmp-vc90-mt-gd.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/mpfr-vc90-mt-gd.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\StarcraftBuildOrderSearch.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Debug\StarcraftBuildOrderSearch.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Debug\StarcraftBuildOrderSearch.lib" /MACHINE:X86 Debug\StarcraftBuildOrderSearch.exe.embed.manifest.res
+         Debug\StarcraftData.obj
+         Debug\test.obj
+         StarcraftBuildOrderSearch.vcxproj -> C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Debug\StarcraftBuildOrderSearch.exe
+     1>Done Building Project "C:\Users\Owner\Downloads\UAlbertaBot directory\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\StarcraftBuildOrderSearch.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:14.59
