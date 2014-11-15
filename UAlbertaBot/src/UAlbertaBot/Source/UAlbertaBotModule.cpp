@@ -92,7 +92,7 @@ void UAlbertaBotModule::onEnd(bool isWinner)
 
 void UAlbertaBotModule::onFrame()
 {
-	//BWAPI::Broodwar->printf("Aly-khan!");
+	BWAPI::Broodwar->printf("Aly-khan!350githubversion");
 	if (Options::Modules::USING_UNIT_COMMAND_MGR)
 	{
 		UnitCommandManager::Instance().update();
