@@ -7,4 +7,4 @@ We will be focusing on making our Bot learn as discussed. We will also work on d
 
 Whatever changes we make, we will describe it in this file, just so we all know what's been done.
 
-Please ignore the dll folder. It contains the original UAlbertaBot.dll. The compiled dll will be located in the release folder.
+Dont't get confused with the dll folder. It contains the original UAlbertaBot.dll. The compiled dll will be located in the release folder.
