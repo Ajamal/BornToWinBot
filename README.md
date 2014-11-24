@@ -9,6 +9,6 @@ Don't get confused with the dll folder, it contains the original UAlbertaBot.dll
 
 Modifications so far:
 
-1) 10 Zealots are built and then sent together to attack (first wave)
+1) 10 Zealots are built and then sent together to attack (first wave) (in CombatCommander.cpp)
 
-2) Added custom build order: At frame 7500 (approximately after first wave) custom build starts to get executed - allot of     zealots and dragoons get built. 
+2) Added custom build order: At frame 7500 (approximately after first wave) custom build starts to get executed - allot of     zealots and dragoons get built. (in ProductionManager.cpp) 
