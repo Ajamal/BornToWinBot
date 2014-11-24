@@ -105,7 +105,7 @@ void ProductionManager::update()
 		enemyCloakedDetected = true;
 	}
 
-	// added if statement. Build dragoons if frame count is 7500
+	// added if statement. Custom Build => Build dragoons when frame count is 7500
 	int frame = BWAPI::Broodwar->getFrameCount();
 	if (frame == 7500)
 	{

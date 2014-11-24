@@ -255,7 +255,7 @@ void CombatCommander::assignAttackRegion(std::set<BWAPI::Unit *> & unitsToAssign
 
 			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack Region")));
 		}
-		// added else statement. Want to make units attack together
+		// added else if statement. Want to make units attack together. Happens only once.
 		else if (global2 == 0)
 		{
 			global2 = 1;
