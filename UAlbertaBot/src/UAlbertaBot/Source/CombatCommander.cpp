@@ -1,6 +1,8 @@
 #include "Common.h"
 #include "CombatCommander.h"
 
+int global = 0;
+int global2 = 0;
 CombatCommander::CombatCommander() 
 	: attacking(false)
 	, foundEnemy(false)
@@ -47,6 +49,10 @@ void CombatCommander::assignIdleSquads(std::set<BWAPI::Unit *> & unitsToAssign)
 void CombatCommander::assignAttackSquads(std::set<BWAPI::Unit *> & unitsToAssign)
 {
 	if (unitsToAssign.empty()) { return; }
+
+	// added if statement. Want to attack together. May add && logic.  
+	if ((unitsToAssign.size() < 10) && (global == 0)) { return; }
+	global = 1;
 
 	bool workersDefending = false;
 	BOOST_FOREACH (BWAPI::Unit * unit, unitsToAssign)
@@ -129,6 +135,9 @@ void CombatCommander::assignScoutDefenseSquads()
 
             // make a squad using the worker to defend
             squadData.addSquad(Squad(workerDefenseForce, SquadOrder(SquadOrder::Defend, regionCenter, 1000, "Get That Scout!")));
+
+			// seeing that not all workers go after one enemy.
+			//workerDefenseForce.clear();
 			return;
         }
 	}
@@ -240,9 +249,19 @@ void CombatCommander::assignAttackRegion(std::set<BWAPI::Unit *> & unitsToAssign
 		if (!oppUnitsInArea.empty())
 		{
 			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
+			// print how many combat units in squad
+			//BWAPI::Broodwar->printf("Combat Units: %d", combatUnits.size());
 			unitsToAssign.clear();
 
 			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack Region")));
+		}
+		// added else statement. Want to make units attack together
+		else if (global2 == 0)
+		{
+			global2 = 1;
+			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
+			unitsToAssign.clear();
+			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack together!!")));
 		}
 	}
 }
