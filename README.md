@@ -15,7 +15,7 @@ Modifications so far:
 
 Priorities:
 
-1) Worker rush.
+1) Top Secret strategy
 
 2) Format custom build to strategy manager format.
 
