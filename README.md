@@ -15,11 +15,9 @@ Modifications so far:
 
 Priorities:
 
-1) Top Secret strategy
+1) Format custom build to strategy manager format.
 
-2) Format custom build to strategy manager format.
+2)  Make sure our workers don't all chase one unit (defend against rush).
 
-3)  Make sure our workers don't all chase one unit (defend against rush).
-
-4) Get learning working.
+3) Get learning working.
 
