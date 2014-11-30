@@ -51,7 +51,7 @@ void CombatCommander::assignAttackSquads(std::set<BWAPI::Unit *> & unitsToAssign
 	if (unitsToAssign.empty()) { return; }
 
 	// added if statement. Want to attack together. May add && logic.  
-	if ((unitsToAssign.size() < 10) && (global == 0)) { return; }
+	if ((unitsToAssign.size() < 10) && (global == 0) && (StrategyManager::Instance().getCurrentStrategy() == 3)) { return; }
 	global = 1;
 
 	bool workersDefending = false;
@@ -166,7 +166,6 @@ void CombatCommander::assignDefenseSquads(std::set<BWAPI::Unit *> & unitsToAssig
 			if (BWTA::getRegion(BWAPI::TilePosition(enemyUnit->getPosition())) == myRegion)
 			{
 				enemyUnitsInRegion.insert(enemyUnit);
-
 				// if the enemy isn't a worker, increase the amount of defenders for it
 				if (!enemyUnit->getType().isWorker())
 				{

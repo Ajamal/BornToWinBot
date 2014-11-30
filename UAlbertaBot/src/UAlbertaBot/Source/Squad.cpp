@@ -177,7 +177,18 @@ bool Squad::needsToRegroup()
 	sim.setCombatUnits(unitClosest->getPosition(), Options::Micro::COMBAT_REGROUP_RADIUS + InformationManager::Instance().lastFrameRegroup*300);
 	ScoreType score = sim.simulateCombat();
 
-    bool retreat = score < 0;
+	int numZealots = BWAPI::Broodwar->self()->completedUnitCount(BWAPI::UnitTypes::Protoss_Zealot);
+	int numDarkTemplars = BWAPI::Broodwar->self()->completedUnitCount(BWAPI::UnitTypes::Protoss_Dark_Templar);
+	int numDragoons = BWAPI::Broodwar->self()->completedUnitCount(BWAPI::UnitTypes::Protoss_Dragoon);
+
+	bool retreat = score < 0;
+
+	//retreat tactics
+	if ((numDragoons) >= 8)
+	{
+		retreat = false;
+	}
+	
     int switchTime = 100;
     bool waiting = false;
 
@@ -207,6 +218,7 @@ bool Squad::needsToRegroup()
 	}
 
 	return retreat;
+	//return false;
 }
 
 void Squad::setSquadOrder(const SquadOrder & so)

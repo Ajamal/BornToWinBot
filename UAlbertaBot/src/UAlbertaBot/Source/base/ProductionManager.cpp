@@ -8,6 +8,8 @@
 #define BOADD(N, T, B) for (int i=0; i<N; ++i) { queue.queueAsLowestPriority(MetaType(T), B); }
 
 #define GOAL_ADD(G, M, N) G.push_back(std::pair<MetaType, int>(M, N))
+ 
+int Gbuild = 0;
 
 ProductionManager::ProductionManager() 
 	: initialBuildSet(false)
@@ -106,46 +108,83 @@ void ProductionManager::update()
 	}
 
 	// added if statement. Custom Build => Build dragoons when frame count is 7500
-	int frame = BWAPI::Broodwar->getFrameCount();
-	if (frame == 7500)
+	int numZealots = BWAPI::Broodwar->self()->completedUnitCount(BWAPI::UnitTypes::Protoss_Zealot);
+	//int frame = BWAPI::Broodwar->getFrameCount();
+	
+	/*
+	if ((numZealots == 10) && (Gbuild == 0))
 	{
+		Gbuild = 1;
 		std::vector<MetaType> buildOrder;
-
-		//buildOrder.push_back(MetaType(BWAPI::UpgradeTypes::Leg_Enhancements));
+		
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+
+		//!
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Gateway));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Forge));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Photon_Cannon));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Forge));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Photon_Cannon));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Forge));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Photon_Cannon));
+		//!
+		
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Assimilator));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Cybernetics_Core));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Pylon));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
-		buildOrder.push_back(MetaType(BWAPI::UpgradeTypes::Singularity_Charge));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+
+		//!
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Citadel_of_Adun));
+		//buildOrder.push_back(MetaType(BWAPI::UpgradeTypes::Leg_Enhancements));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Pylon));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Templar_Archives));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dark_Templar));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dark_Templar));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dark_Templar));
+		//buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dark_Templar));
+		//buildOrder.push_back(MetaType(BWAPI::UpgradeTypes::Leg_Enhancements));
+		//!
+
+		buildOrder.push_back(MetaType(BWAPI::UpgradeTypes::Singularity_Charge));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Pylon));
+
+
+
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
+
+
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
+
+
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
+		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
 		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Zealot));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
-		buildOrder.push_back(MetaType(BWAPI::UnitTypes::Protoss_Dragoon));
 
 		setBuildOrder(buildOrder);
 	}
-
+	*/
 
 //	if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawTextScreen(447, 17, "\x07 %d", BuildingManager::Instance().getReservedMinerals());
 }
