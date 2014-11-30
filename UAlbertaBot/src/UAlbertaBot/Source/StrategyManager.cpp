@@ -204,7 +204,7 @@ void StrategyManager::setStrategy()
         }
         else
         {
-            currentStrategy = ProtossZealotRush;
+			currentStrategy = ProtossCustomDragoons;
         }
 	}
 

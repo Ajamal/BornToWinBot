@@ -196,8 +196,8 @@ void BaitManager::update(const std::set<BWAPI::Unit *> & baitUnits)
 		BWAPI::Unit * baitUnit = *baitUnits.begin();
 		//BWAPI::Broodwar->printf("Moving Bait Unit");
 		baitPos = baitUnit->getPosition();
-		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawBoxMap(baitUnit->getPosition().x() - 10,
-			baitUnit->getPosition().y() - 10, baitUnit->getPosition().x() + 10, baitUnit->getPosition().y() + 10, BWAPI::Colors::Purple, false);
+		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawBoxMap(baitUnit->getPosition().x() - 15,
+			baitUnit->getPosition().y() - 15, baitUnit->getPosition().x() + 15, baitUnit->getPosition().y() + 15, BWAPI::Colors::Purple, true);
 		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawCircleMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
 			100, BWAPI::Colors::Purple, false);
 		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawCircleMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
@@ -232,7 +232,7 @@ void BaitManager::runToNext(BWAPI::Unit * baitUnit)
 	if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
 		chasePoints[currentDest].x(), chasePoints[currentDest].y(),
 		BWAPI::Colors::Purple);
-	//BWAPI::Broodwar->printf("new chase dest #%d", currentDest);
+	BWAPI::Broodwar->printf("new chase dest #%d", currentDest);
 }
 
 void BaitManager::moveBait(BWAPI::Unit * baitUnit)
@@ -289,6 +289,9 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 		else /*if (baitUnit->isHoldingPosition())*/
 		{
 			baitUnit->move(chasePoints[currentDest]);
+			if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
+				chasePoints[currentDest].x(), chasePoints[currentDest].y(),
+				BWAPI::Colors::Purple);
 		}
 		return;
 	}

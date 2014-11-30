@@ -1,10 +1,10 @@
-﻿Build started 11/30/2014 3:11:08 PM.
+﻿Build started 11/30/2014 4:16:53 PM.
      1>Project "C:\Users\User\Desktop\350_StarCraft\Merging room\BornToWinBot-master\UAlbertaBot\src\UAlbertaBot\VisualStudio\UAlbertaBot.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /I../Source /I"C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/include" /IC:\Users\User\Desktop\350_StarCraft\boost_1_56_0\ /I/include /I/include /I/include/freetype2 /I/include /Zi /nologo /W3 /WX- /Ox /Ob2 /Oi /Ot /Oy- /GL /D CODE_ANALYSIS /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D EXAMPLEAIMODULE_EXPORTS /D NOMINMAX /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze /errorReport:prompt ..\Source\CombatCommander.cpp ..\Source\GameCommander.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /I../Source /I"C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/include" /IC:\Users\User\Desktop\350_StarCraft\boost_1_56_0\ /I/include /I/include /I/include/freetype2 /I/include /Zi /nologo /W3 /WX- /Ox /Ob2 /Oi /Ot /Oy- /GL /D CODE_ANALYSIS /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D EXAMPLEAIMODULE_EXPORTS /D NOMINMAX /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze /errorReport:prompt ..\Source\base\StarcraftBuildOrderSearchManager.cpp ..\Source\micromanagement\BaitManager.cpp
      1>cl : Command line warning D9040: ignoring option '/analyze'; Code Analysis warnings are not available in this edition of the compiler
-         CombatCommander.cpp
-         GameCommander.cpp
+         StarcraftBuildOrderSearchManager.cpp
+         BaitManager.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Desktop\350_StarCraft\Merging room\BornToWinBot-master\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.dll" /INCREMENTAL:NO /NOLOGO "C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/lib/BWAPI.lib" "C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/lib/BWTA.lib" "C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/lib/tinyxml.lib" "C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/lib/CGAL-vc90-mt.lib" "C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/lib/libboost_thread-vc90-mt-1_40.lib" "C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/lib/gmp-vc90-mt.lib" "C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\/lib/mpfr-vc90-mt.lib" ../../StarcraftBuildOrderSearch/VisualStudio/Release/StarCraftData.obj Release/SparCraft.lib /SDL.lib /SDLmain.lib /opengl32.lib /SDL_image.lib /SDL_gfx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\UAlbertaBot.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\User\Desktop\350_StarCraft\Merging room\BornToWinBot-master\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.pdb" /MAP /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /DLL Release\BuildLearner.obj
          Release\CombatSimulation.obj
@@ -62,4 +62,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:01:20.34
+Time Elapsed 00:01:18.85
