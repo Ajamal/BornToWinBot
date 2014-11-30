@@ -123,8 +123,6 @@ public:
 
 	void populateUnitVectors();
 	void setValidUnits();
-	//B2WB Bait
-	int numBaitUnits;
 	void GameCommander::setBaitUnits();
 	void setScoutUnits();
 	void setWorkerUnits();

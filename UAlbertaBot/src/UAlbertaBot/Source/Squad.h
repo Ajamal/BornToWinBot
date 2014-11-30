@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Common.h"
-#include "micromanagement/BaitManager.h"
 #include "micromanagement/MeleeManager.h"
+#include "micromanagement/BaitManager.h"
 #include "micromanagement/RangedManager.h"
 #include "micromanagement/DetectorManager.h"
 #include "micromanagement/TransportManager.h"
@@ -28,8 +28,6 @@ class Squad
 	bool				squadObserverNear(BWAPI::Position p);
 	
 	SquadOrder			order;
-	//B2WB Bait
-	//BaitManager			baitManager;
 	MeleeManager		meleeManager;
 	RangedManager		rangedManager;
 	DetectorManager		detectorManager;

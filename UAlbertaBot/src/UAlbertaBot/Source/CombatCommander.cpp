@@ -1,6 +1,8 @@
 #include "Common.h"
 #include "CombatCommander.h"
 
+int global = 0;
+int global2 = 0;
 CombatCommander::CombatCommander() 
 	: attacking(false)
 	, foundEnemy(false)
@@ -25,10 +27,6 @@ void CombatCommander::update(std::set<BWAPI::Unit *> unitsToAssign)
 		WorkerManager::Instance().finishedWithCombatWorkers();
         
 		// Assign defense and attack squads
-
-		//B2WB
-		//assignBaitSquads(unitsToAssign);
-
         assignScoutDefenseSquads();
 		assignDefenseSquads(unitsToAssign);
 		assignAttackSquads(unitsToAssign);
@@ -51,6 +49,12 @@ void CombatCommander::assignIdleSquads(std::set<BWAPI::Unit *> & unitsToAssign)
 void CombatCommander::assignAttackSquads(std::set<BWAPI::Unit *> & unitsToAssign)
 {
 	if (unitsToAssign.empty()) { return; }
+
+	// added if statement. Want to attack together. May add && logic.  
+	if ((unitsToAssign.size() < 10) && (global == 0) && (StrategyManager::Instance().getCurrentStrategy() == 3)) { 
+		BWAPI::Broodwar->printf("There are not 10 units");
+		return; }
+	global = 1;
 
 	bool workersDefending = false;
 	BOOST_FOREACH (BWAPI::Unit * unit, unitsToAssign)
@@ -133,6 +137,9 @@ void CombatCommander::assignScoutDefenseSquads()
 
             // make a squad using the worker to defend
             squadData.addSquad(Squad(workerDefenseForce, SquadOrder(SquadOrder::Defend, regionCenter, 1000, "Get That Scout!")));
+
+			// seeing that not all workers go after one enemy.
+			//workerDefenseForce.clear();
 			return;
         }
 	}
@@ -161,7 +168,6 @@ void CombatCommander::assignDefenseSquads(std::set<BWAPI::Unit *> & unitsToAssig
 			if (BWTA::getRegion(BWAPI::TilePosition(enemyUnit->getPosition())) == myRegion)
 			{
 				enemyUnitsInRegion.insert(enemyUnit);
-
 				// if the enemy isn't a worker, increase the amount of defenders for it
 				if (!enemyUnit->getType().isWorker())
 				{
@@ -244,9 +250,20 @@ void CombatCommander::assignAttackRegion(std::set<BWAPI::Unit *> & unitsToAssign
 		if (!oppUnitsInArea.empty())
 		{
 			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
+			// print how many combat units in squad
+			//BWAPI::Broodwar->printf("Combat Units: %d", combatUnits.size());
 			unitsToAssign.clear();
 
 			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack Region")));
+		}
+		// added else if statement. Want to make units attack together. Happens only once.
+		else if (global2 == 0)
+		{
+			BWAPI::Broodwar->printf("there are 10 units clearing units");
+			global2 = 1;
+			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
+			unitsToAssign.clear();
+			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack together!!")));
 		}
 	}
 }
@@ -259,6 +276,17 @@ void CombatCommander::assignAttackVisibleUnits(std::set<BWAPI::Unit *> & unitsTo
 	{
 		if (unit->isVisible())
 		{
+			//B2WB Bait
+			bool BAIT = true;
+			if (BAIT)
+			{
+				UnitVector nearbyAllies;
+				MapGrid::Instance().GetUnits(nearbyAllies, BaitManager::Instance().baitPos, 500, true, false);
+				if (nearbyAllies.size() <= 1 && (unit->getDistance(BaitManager::Instance().baitPos) < 300))
+				{
+					return;
+				}
+			}
 			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
 			unitsToAssign.clear();
 

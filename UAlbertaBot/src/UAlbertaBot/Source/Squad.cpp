@@ -47,9 +47,6 @@ void Squad::update()
 	{
 		InformationManager::Instance().lastFrameRegroup = 1;
 
-		//B2WB
-		//baitManager.execute(order);
-
 		meleeManager.execute(order);
 		rangedManager.execute(order);
 		transportManager.execute(order);
@@ -111,9 +108,6 @@ void Squad::setNearEnemyUnits()
 
 void Squad::setManagerUnits()
 {
-	//B2WB
-	//UnitVector baitUnits;
-
 	UnitVector meleeUnits;
 	UnitVector rangedUnits;
 	UnitVector detectorUnits;
@@ -139,13 +133,6 @@ void Squad::setManagerUnits()
 			{
 				rangedUnits.push_back(unit);
 			}
-			// B2WB set first zealot to be Bait
-			/*
-			else if ((units.size() == 1) && (unit->getType().groundWeapon().maxRange() <= 32) && (unit->getType() == BWAPI::UnitTypes::Protoss_Zealot))
-			{
-				baitUnits.push_back(unit);
-			}
-			*/
 			// select melee units
 			else if (unit->getType().groundWeapon().maxRange() <= 32)
 			{
@@ -153,9 +140,7 @@ void Squad::setManagerUnits()
 			}
 		}
 	}
-	//B2WB
-	//baitManager.setUnits(baitUnits);
-	
+
 	meleeManager.setUnits(meleeUnits);
 	rangedManager.setUnits(rangedUnits);
 	detectorManager.setUnits(detectorUnits);
@@ -192,7 +177,18 @@ bool Squad::needsToRegroup()
 	sim.setCombatUnits(unitClosest->getPosition(), Options::Micro::COMBAT_REGROUP_RADIUS + InformationManager::Instance().lastFrameRegroup*300);
 	ScoreType score = sim.simulateCombat();
 
-    bool retreat = score < 0;
+	int numZealots = BWAPI::Broodwar->self()->completedUnitCount(BWAPI::UnitTypes::Protoss_Zealot);
+	int numDarkTemplars = BWAPI::Broodwar->self()->completedUnitCount(BWAPI::UnitTypes::Protoss_Dark_Templar);
+	int numDragoons = BWAPI::Broodwar->self()->completedUnitCount(BWAPI::UnitTypes::Protoss_Dragoon);
+
+	bool retreat = score < 0;
+
+	//retreat tactics
+	if ((numDragoons) >= 8)
+	{
+		retreat = false;
+	}
+	
     int switchTime = 100;
     bool waiting = false;
 
@@ -222,6 +218,7 @@ bool Squad::needsToRegroup()
 	}
 
 	return retreat;
+	//return false;
 }
 
 void Squad::setSquadOrder(const SquadOrder & so)

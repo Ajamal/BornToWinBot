@@ -24,7 +24,6 @@ UAlbertaBotModule::~UAlbertaBotModule() {}
 
 void UAlbertaBotModule::onStart()
 {
-	//BWAPI::Broodwar->printf("Born To Win Bot!");
 	BWAPI::Broodwar->setLocalSpeed(0);
 	//BWAPI::Broodwar->setFrameSkip(240);
 
@@ -93,8 +92,7 @@ void UAlbertaBotModule::onEnd(bool isWinner)
 
 void UAlbertaBotModule::onFrame()
 {
-	//BWAPI::Broodwar->printf("Aly-khan Jamal, 1269693");
-	//BWAPI::Broodwar->printf(&(BWAPI::Broodwar->mapName())[0]);
+	//BWAPI::Broodwar->printf("Aly-khan Jamal");
 	if (Options::Modules::USING_UNIT_COMMAND_MGR)
 	{
 		UnitCommandManager::Instance().update();

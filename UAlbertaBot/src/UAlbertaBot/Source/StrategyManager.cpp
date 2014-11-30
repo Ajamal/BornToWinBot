@@ -27,10 +27,15 @@ void StrategyManager::addStrategies()
 
 	//protossOpeningBook[ProtossZealotRush]	= "0 0 0 0 1 0 0 3 0 0 3 0 1 3 0 4 4 4 4 4 1 0 4 4 4";
     protossOpeningBook[ProtossZealotRush]	= "0 0 0 0 1 0 3 3 0 0 4 1 4 4 0 4 4 0 1 4 3 0 1 0 4 0 4 4 4 4 1 0 4 4 4";
+	
 	//protossOpeningBook[ProtossZealotRush]	= "0";
 	//protossOpeningBook[ProtossDarkTemplar]	= "0 0 0 0 1 3 0 7 5 0 0 12 3 13 0 22 22 22 22 0 1 0";
     protossOpeningBook[ProtossDarkTemplar]	=     "0 0 0 0 1 0 3 0 7 0 5 0 12 0 13 3 22 22 1 22 22 0 1 0";
 	protossOpeningBook[ProtossDragoons]		= "0 0 0 0 1 0 0 3 0 7 0 0 5 0 0 3 8 6 1 6 6 0 3 1 0 6 6 6";
+	protossOpeningBook[ProtossCustomDragoons] = "0 0 0 0 1 0 3 3 0 0 4 1 4 4 0 4 4 0 1 4 3 0 1 0 4 0 4 4 4 4 4 4 4 7 4 5 1 4 4 \
+												8 6 6 1 6 6 6 6 6 6 4 4 4 4 6 6 6 6 4 4 4";
+
+
 	terranOpeningBook[TerranMarineRush]		= "0 0 0 0 0 1 0 0 3 0 0 3 0 1 0 4 0 0 0 6";
 	zergOpeningBook[ZergZerglingRush]		= "0 0 0 0 0 1 0 0 0 2 3 5 0 0 0 0 0 0 1 6";
 
@@ -43,6 +48,7 @@ void StrategyManager::addStrategies()
 			usableStrategies.push_back(ProtossZealotRush);
 			usableStrategies.push_back(ProtossDarkTemplar);
 			usableStrategies.push_back(ProtossDragoons);
+			usableStrategies.push_back(ProtossCustomDragoons);
 		}
 		else if (enemyRace == BWAPI::Races::Terran)
 		{
@@ -60,6 +66,7 @@ void StrategyManager::addStrategies()
 			BWAPI::Broodwar->printf("Enemy Race Unknown");
 			usableStrategies.push_back(ProtossZealotRush);
 			usableStrategies.push_back(ProtossDragoons);
+			usableStrategies.push_back(ProtossCustomDragoons);
 		}
 	}
 	else if (selfRace == BWAPI::Races::Terran)
@@ -123,6 +130,10 @@ void StrategyManager::readResults()
 		results[ProtossDragoons].first = atoi(line.c_str());
 		getline(f_in, line);
 		results[ProtossDragoons].second = atoi(line.c_str());
+		getline(f_in, line);
+		results[ProtossCustomDragoons].first = atoi(line.c_str());
+		getline(f_in, line);
+		results[ProtossCustomDragoons].second = atoi(line.c_str());
 		f_in.close();
 	}
 
@@ -141,6 +152,8 @@ void StrategyManager::writeResults()
 	f_out << results[ProtossDarkTemplar].second << "\n";
 	f_out << results[ProtossDragoons].first     << "\n";
 	f_out << results[ProtossDragoons].second    << "\n";
+	f_out << results[ProtossCustomDragoons].first << "\n";
+	f_out << results[ProtossCustomDragoons].second << "\n";
 
 	f_out.close();
 }
@@ -257,7 +270,8 @@ const std::string StrategyManager::getOpeningBook() const
 {
 	if (selfRace == BWAPI::Races::Protoss)
 	{
-		return protossOpeningBook[currentStrategy];
+		//testing. can change to 3 to choose ProtossCustomDragoons
+		return protossOpeningBook[ProtossCustomDragoons];
 	}
 	else if (selfRace == BWAPI::Races::Terran)
 	{
@@ -393,6 +407,10 @@ const MetaPairVector StrategyManager::getBuildOrderGoal()
 		else if (getCurrentStrategy() == ProtossDragoons)
 		{
 			return getProtossDragoonsBuildOrderGoal();
+		}
+		else if (getCurrentStrategy() == ProtossCustomDragoons)
+		{
+			//return getProtossCustomDragoonsBuildOrderGoal();
 		}
 
 		// if something goes wrong, use zealot goal
