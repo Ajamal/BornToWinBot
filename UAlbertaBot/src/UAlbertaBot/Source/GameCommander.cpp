@@ -35,6 +35,15 @@ void GameCommander::update()
 	}
 	timerManager.stopTimer(TimerManager::Combat);
 
+	//B2WB Bait
+	bool Bait = true;
+	if (Bait)
+	{
+		timerManager.startTimer(TimerManager::Bait);
+		BaitManager::Instance().update(baitUnits);
+		timerManager.stopTimer(TimerManager::Bait);
+	}
+
 	timerManager.startTimer(TimerManager::Scout);
 	if (Options::Modules::USING_SCOUTMANAGER)
 	{
@@ -92,6 +101,12 @@ void GameCommander::populateUnitVectors()
 	setValidUnits();
 
 	// set each type of unit
+	//B2WB Bait
+	bool BAIT = true;
+	if (BAIT)
+	{
+		setBaitUnits();
+	}
 	setScoutUnits();
 	setCombatUnits();
 	setWorkerUnits();
@@ -117,7 +132,33 @@ void GameCommander::setValidUnits()
 		}
 	}
 }
+//B2WB Bait
+void GameCommander::setBaitUnits()
+{
+	if (BaitManager::Instance().numBaitUnits == 0 && BaitManager::Instance().baitID == 0)
+	{
+		BOOST_FOREACH(BWAPI::Unit * unit, validUnits)
+		{
+			if ((unit->getType() == BWAPI::UnitTypes::Protoss_Zealot) && (unit->getHitPoints() > 0)){
+				++BaitManager::Instance().numBaitUnits;
+				BaitManager::Instance().baitID = unit->getID();
+				BWAPI::Broodwar->printf("%d Bait units assigned!", BaitManager::Instance().numBaitUnits);
+				//validUnits.erase(unit);
+				//combatUnits.erase(unit);
+				baitUnits.insert(unit);
+				assignedUnits.insert(unit);		
 
+				//initialize map points when the first bait unit is set
+				if (!BaitManager::Instance().hasBaited)
+				{
+					BaitManager::Instance().initialize_map_points(BWAPI::Broodwar->mapFileName());
+					BaitManager::Instance().hasBaited = true;
+				}
+				return;
+			}
+		}
+	}
+}
 // selects which units will be scouting
 // currently only selects the worker scout after first pylon built
 // this does NOT take that worker away from worker manager, but it still works
@@ -195,6 +236,13 @@ bool GameCommander::isCombatUnit(BWAPI::Unit * unit) const
 
 	// no workers or buildings allowed
 	if (unit && unit->getType().isWorker() || unit->getType().isBuilding())
+	{
+		return false;
+	}
+
+	//B2WB bait stop bait unit from being treated as combat unit
+	bool BAIT = true;
+	if (BAIT && (unit == *(baitUnits.begin())))
 	{
 		return false;
 	}
@@ -302,6 +350,12 @@ void GameCommander::onUnitDestroy(BWAPI::Unit * unit)
 { 	
 	ProductionManager::Instance().onUnitDestroy(unit);
 	WorkerManager::Instance().onUnitDestroy(unit);
+	//B2WB Bait
+	bool BAIT = true;
+	if (BAIT)
+	{
+		BaitManager::Instance().onUnitDestroy(unit);
+	}
 	InformationManager::Instance().onUnitDestroy(unit); 
 }
 
