@@ -42,9 +42,9 @@ dlldata.c
 *_i.h
 *.ilk
 *.meta
-*/*/obj
+*/obj
 *.pch
-*/*/pdb
+*/pdb
 *.pgc
 *.pgd
 *.rsp
@@ -54,7 +54,7 @@ dlldata.c
 *.tlh
 *.tmp
 *.tmp_proj
-*/*/log
+*/log
 *.vspscc
 *.vssscc
 .builds
