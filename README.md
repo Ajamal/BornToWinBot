@@ -17,6 +17,7 @@ Priorities:
 
 1) Format custom build to strategy manager format.
 
-2) Get learning working.
+2)  Make sure our workers don't all chase one unit (defend against rush).
 
-3) Add new strategies
+3) Get learning working.
+
