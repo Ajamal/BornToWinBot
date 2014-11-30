@@ -35,6 +35,8 @@ void StrategyManager::addStrategies()
 	protossOpeningBook[ProtossCustomDragoons] = "0 0 0 0 1 0 3 3 0 0 4 1 4 4 0 4 4 0 1 4 3 0 1 0 4 0 4 4 4 4 4 4 4 7 4 5 1 4 4 \
 												8 6 6 1 6 6 6 6 6 6 4 4 4 4 6 6 6 6 4 4 4";
 
+	protossOpeningBook[WorkerRush] = "0";
+
 
 	terranOpeningBook[TerranMarineRush]		= "0 0 0 0 0 1 0 0 3 0 0 3 0 1 0 4 0 0 0 6";
 	zergOpeningBook[ZergZerglingRush]		= "0 0 0 0 0 1 0 0 0 2 3 5 0 0 0 0 0 0 1 6";
@@ -49,17 +51,22 @@ void StrategyManager::addStrategies()
 			usableStrategies.push_back(ProtossDarkTemplar);
 			usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
+			usableStrategies.push_back(WorkerRush);
 		}
 		else if (enemyRace == BWAPI::Races::Terran)
 		{
 			usableStrategies.push_back(ProtossZealotRush);
 			usableStrategies.push_back(ProtossDarkTemplar);
 			usableStrategies.push_back(ProtossDragoons);
+			usableStrategies.push_back(ProtossCustomDragoons);
+			usableStrategies.push_back(WorkerRush);
 		}
 		else if (enemyRace == BWAPI::Races::Zerg)
 		{
 			usableStrategies.push_back(ProtossZealotRush);
 			usableStrategies.push_back(ProtossDragoons);
+			usableStrategies.push_back(ProtossCustomDragoons);
+			usableStrategies.push_back(WorkerRush);
 		}
 		else
 		{
@@ -67,6 +74,7 @@ void StrategyManager::addStrategies()
 			usableStrategies.push_back(ProtossZealotRush);
 			usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
+			usableStrategies.push_back(WorkerRush);
 		}
 	}
 	else if (selfRace == BWAPI::Races::Terran)
@@ -91,11 +99,16 @@ void StrategyManager::readResults()
 	// read in the name of the read and write directories from settings file
 	struct stat buf;
 
+	//readDir = "bwapi-data/read/";
+	readDir = "bwapi-data/write/";
+	writeDir = "bwapi-data/write/";
+
+	/*
 	// if the file doesn't exist something is wrong so just set them to default settings
 	if (stat(Options::FileIO::FILE_SETTINGS, &buf) == -1)
 	{
-		readDir = "bwapi-data/testio/read/";
-		writeDir = "bwapi-data/testio/write/";
+		readDir = "bwapi-data/read/";
+		writeDir = "bwapi-data/write/";
 	}
 	else
 	{
@@ -104,6 +117,7 @@ void StrategyManager::readResults()
 		getline(f_in, writeDir);
 		f_in.close();
 	}
+	*/
 
 	// the file corresponding to the enemy's previous results
 	std::string readFile = readDir + BWAPI::Broodwar->enemy()->getName() + ".txt";
@@ -134,6 +148,10 @@ void StrategyManager::readResults()
 		results[ProtossCustomDragoons].first = atoi(line.c_str());
 		getline(f_in, line);
 		results[ProtossCustomDragoons].second = atoi(line.c_str());
+		getline(f_in, line);
+		results[WorkerRush].first = atoi(line.c_str());
+		getline(f_in, line);
+		results[WorkerRush].second = atoi(line.c_str());
 		f_in.close();
 	}
 
@@ -143,6 +161,11 @@ void StrategyManager::readResults()
 
 void StrategyManager::writeResults()
 {
+	//readDir = "bwapi-data/read/";
+	// CHANGE FOR FINAL SUBMISSION
+	readDir = "bwapi-data/write/";
+	writeDir = "bwapi-data/write/";
+
 	std::string writeFile = writeDir + BWAPI::Broodwar->enemy()->getName() + ".txt";
 	std::ofstream f_out(writeFile.c_str());
 
@@ -154,6 +177,8 @@ void StrategyManager::writeResults()
 	f_out << results[ProtossDragoons].second    << "\n";
 	f_out << results[ProtossCustomDragoons].first << "\n";
 	f_out << results[ProtossCustomDragoons].second << "\n";
+	f_out << results[WorkerRush].first << "\n";
+	f_out << results[WorkerRush].second << "\n";
 
 	f_out.close();
 }
