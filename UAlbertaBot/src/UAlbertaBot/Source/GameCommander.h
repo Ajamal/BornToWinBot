@@ -7,6 +7,7 @@
 #include "base/WorkerManager.h"
 #include "base/ProductionManager.h"
 #include "base/BuildingManager.h"
+#include "micromanagement/BaitManager.h"
 #include "ScoutManager.h"
 #include "StrategyManager.h"
 
@@ -22,7 +23,7 @@ class TimerManager
 
 public:
 
-	enum Type { All, Worker, Production, Building, Combat, Scout, InformationManager, MapGrid, MapTools, Search, NumTypes };
+	enum Type { All, Worker, Production, Building, Combat, Bait, Scout, InformationManager, MapGrid, MapTools, Search, NumTypes };
 
 
 	TimerManager() : timers(std::vector<BuildOrderSearch::Timer>(NumTypes)), barWidth(40)
@@ -32,6 +33,7 @@ public:
 		timerNames.push_back("Production");
 		timerNames.push_back("Building");
 		timerNames.push_back("Combat");
+		timerNames.push_back("Bait");
 		timerNames.push_back("Scout");
 		timerNames.push_back("UnitInfo");
 		timerNames.push_back("MapGrid");
@@ -93,11 +95,15 @@ public:
 class GameCommander 
 {
 	CombatCommander		combatCommander;
+	//B2WB Bait
+	BaitManager			baitManager;
 	ScoutManager		scoutManager;
 	TimerManager		timerManager;
 
 	std::set<BWAPI::Unit *> combatUnits;
 	std::set<BWAPI::Unit *> scoutUnits;
+	//B2WB Bait
+	std::set<BWAPI::Unit *> baitUnits;
 	std::set<BWAPI::Unit *> workerUnits;
 
 	std::set<BWAPI::Unit *>	validUnits;
@@ -117,6 +123,9 @@ public:
 
 	void populateUnitVectors();
 	void setValidUnits();
+	//B2WB Bait
+	int numBaitUnits;
+	void GameCommander::setBaitUnits();
 	void setScoutUnits();
 	void setWorkerUnits();
 	void setCombatUnits();

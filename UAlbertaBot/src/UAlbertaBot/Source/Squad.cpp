@@ -47,6 +47,9 @@ void Squad::update()
 	{
 		InformationManager::Instance().lastFrameRegroup = 1;
 
+		//B2WB
+		//baitManager.execute(order);
+
 		meleeManager.execute(order);
 		rangedManager.execute(order);
 		transportManager.execute(order);
@@ -108,6 +111,9 @@ void Squad::setNearEnemyUnits()
 
 void Squad::setManagerUnits()
 {
+	//B2WB
+	//UnitVector baitUnits;
+
 	UnitVector meleeUnits;
 	UnitVector rangedUnits;
 	UnitVector detectorUnits;
@@ -133,6 +139,13 @@ void Squad::setManagerUnits()
 			{
 				rangedUnits.push_back(unit);
 			}
+			// B2WB set first zealot to be Bait
+			/*
+			else if ((units.size() == 1) && (unit->getType().groundWeapon().maxRange() <= 32) && (unit->getType() == BWAPI::UnitTypes::Protoss_Zealot))
+			{
+				baitUnits.push_back(unit);
+			}
+			*/
 			// select melee units
 			else if (unit->getType().groundWeapon().maxRange() <= 32)
 			{
@@ -140,7 +153,9 @@ void Squad::setManagerUnits()
 			}
 		}
 	}
-
+	//B2WB
+	//baitManager.setUnits(baitUnits);
+	
 	meleeManager.setUnits(meleeUnits);
 	rangedManager.setUnits(rangedUnits);
 	detectorManager.setUnits(detectorUnits);

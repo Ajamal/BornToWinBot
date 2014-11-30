@@ -25,6 +25,10 @@ void CombatCommander::update(std::set<BWAPI::Unit *> unitsToAssign)
 		WorkerManager::Instance().finishedWithCombatWorkers();
         
 		// Assign defense and attack squads
+
+		//B2WB
+		//assignBaitSquads(unitsToAssign);
+
         assignScoutDefenseSquads();
 		assignDefenseSquads(unitsToAssign);
 		assignAttackSquads(unitsToAssign);

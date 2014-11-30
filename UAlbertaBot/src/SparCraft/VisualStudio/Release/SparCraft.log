@@ -1,7 +1,7 @@
-﻿Build started 14/11/2014 9:00:36 PM.
-     1>Project "C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" on node 2 (Build target(s)).
+﻿Build started 22/11/2014 10:45:43 AM.
+     1>Project "C:\Users\Owner\Dropbox\Portabilis\CMPUT 350\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" on node 3 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /IC:\Users\Owner\Downloads\BOOST\boost_1_56_0 /I"C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4" /I"C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4\include" /I\include /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\Logger.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\WeaponProperties.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /IC:\Users\Owner\Documents\Programming\Libraries\boost_1_56_0\ /I"C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4" /I"C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4\include" /I\include /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\Logger.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\WeaponProperties.cpp
          AllPlayers.cpp
          AlphaBetaSearch.cpp
          AnimationFrameData.cpp
@@ -39,7 +39,7 @@
          UnitScriptData.cpp
          WeaponProperties.cpp
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\Lib.exe /OUT:"C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\SparCraft.lib" /NOLOGO /LTCG Release\AllPlayers.obj
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\Lib.exe /OUT:"C:\Users\Owner\Dropbox\Portabilis\CMPUT 350\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\SparCraft.lib" /NOLOGO /LTCG Release\AllPlayers.obj
          Release\AlphaBetaSearch.obj
          Release\AnimationFrameData.obj
          Release\Common.obj
@@ -74,9 +74,9 @@
          Release\UnitProperties.obj
          Release\UnitScriptData.obj
          Release\WeaponProperties.obj
-         SparCraft.vcxproj -> C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\SparCraft.lib
-     1>Done Building Project "C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" (Build target(s)).
+         SparCraft.vcxproj -> C:\Users\Owner\Dropbox\Portabilis\CMPUT 350\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\SparCraft.lib
+     1>Done Building Project "C:\Users\Owner\Dropbox\Portabilis\CMPUT 350\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:03:11.96
+Time Elapsed 00:00:45.03

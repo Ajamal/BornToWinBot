@@ -35,6 +35,13 @@ void GameCommander::update()
 	}
 	timerManager.stopTimer(TimerManager::Combat);
 
+	//B2WB Bait
+	timerManager.startTimer(TimerManager::Bait);
+	//do a if baiting works -------------------------------------------------------------------------------------
+	baitManager.update(baitUnits);
+	timerManager.stopTimer(TimerManager::Bait);
+
+
 	timerManager.startTimer(TimerManager::Scout);
 	if (Options::Modules::USING_SCOUTMANAGER)
 	{
@@ -92,6 +99,8 @@ void GameCommander::populateUnitVectors()
 	setValidUnits();
 
 	// set each type of unit
+	//B2WB Bait
+	setBaitUnits();
 	setScoutUnits();
 	setCombatUnits();
 	setWorkerUnits();
@@ -117,7 +126,24 @@ void GameCommander::setValidUnits()
 		}
 	}
 }
-
+//B2WB Bait
+void GameCommander::setBaitUnits()
+{
+	if (numBaitUnits == 0)
+	{
+		BOOST_FOREACH(BWAPI::Unit * unit, validUnits)
+		{
+			if ((unit->getType() == BWAPI::UnitTypes::Protoss_Zealot) && (unit->getHitPoints() > 0)){
+				++numBaitUnits;
+				BWAPI::Broodwar->printf("%d Bait units assigned!",numBaitUnits);
+				//validUnits.erase(unit);
+				combatUnits.erase(unit);
+				baitUnits.insert(unit);
+				assignedUnits.insert(unit);			
+			}
+		}
+	}
+}
 // selects which units will be scouting
 // currently only selects the worker scout after first pylon built
 // this does NOT take that worker away from worker manager, but it still works
@@ -195,6 +221,12 @@ bool GameCommander::isCombatUnit(BWAPI::Unit * unit) const
 
 	// no workers or buildings allowed
 	if (unit && unit->getType().isWorker() || unit->getType().isBuilding())
+	{
+		return false;
+	}
+
+	//B2WB bait stop bait unit from being treated as combat unit
+	if (unit == *(baitUnits.begin()))
 	{
 		return false;
 	}

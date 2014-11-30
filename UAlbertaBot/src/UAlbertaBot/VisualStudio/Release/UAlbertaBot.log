@@ -1,14 +1,15 @@
-﻿Build started 14/11/2014 9:59:17 PM.
-     1>Project "C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\UAlbertaBot.vcxproj" on node 2 (Build target(s)).
+﻿Build started 22/11/2014 8:59:47 PM.
+     1>Project "C:\Users\Owner\Dropbox\Portabilis\CMPUT 350\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\UAlbertaBot.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /I../Source /I"C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/include" /IC:\Users\Owner\Downloads\BOOST\boost_1_56_0 /I/include /I/include /I/include/freetype2 /I/include /Zi /nologo /W3 /WX- /Ox /Ob2 /Oi /Ot /Oy- /GL /D CODE_ANALYSIS /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D EXAMPLEAIMODULE_EXPORTS /D NOMINMAX /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze /errorReport:prompt ..\Source\UAlbertaBotModule.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /I../Source /I"C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/include" /IC:\Users\Owner\Documents\Programming\Libraries\boost_1_56_0\ /I/include /I/include /I/include/freetype2 /I/include /Zi /nologo /W3 /WX- /Ox /Ob2 /Oi /Ot /Oy- /GL /D CODE_ANALYSIS /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D EXAMPLEAIMODULE_EXPORTS /D NOMINMAX /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze /errorReport:prompt ..\Source\micromanagement\BaitManager.cpp
      1>cl : Command line warning D9040: ignoring option '/analyze'; Code Analysis warnings are not available in this edition of the compiler
-         UAlbertaBotModule.cpp
-     1>..\Source\UAlbertaBotModule.cpp(175): warning C4018: '<' : signed/unsigned mismatch
-     1>..\Source\UAlbertaBotModule.cpp(186): warning C4018: '<' : signed/unsigned mismatch
+         BaitManager.cpp
+     1>..\Source\micromanagement\BaitManager.cpp(71): warning C4018: '>' : signed/unsigned mismatch
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.dll" /INCREMENTAL:NO /NOLOGO "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/BWAPI.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/BWTA.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/tinyxml.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/CGAL-vc90-mt.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/libboost_thread-vc90-mt-1_40.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/gmp-vc90-mt.lib" "C:\Users\Owner\Downloads\BWAPI\BWAPI 3.7.4/lib/mpfr-vc90-mt.lib" ../../StarcraftBuildOrderSearch/VisualStudio/Release/StarCraftData.obj Release/SparCraft.lib /SDL.lib /SDLmain.lib /opengl32.lib /SDL_image.lib /SDL_gfx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\UAlbertaBot.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.pdb" /MAP /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /DLL Release\BuildLearner.obj
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\..\..\..\..\..\..\..\Games\StarCraft\StarCraft\bwapi-data\AI\B2WB\UAlbertaBot.dll" /INCREMENTAL:NO /NOLOGO "C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/lib/BWAPI.lib" "C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/lib/BWTA.lib" "C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/lib/tinyxml.lib" "C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/lib/CGAL-vc90-mt.lib" "C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/lib/libboost_thread-vc90-mt-1_40.lib" "C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/lib/gmp-vc90-mt.lib" "C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/lib/mpfr-vc90-mt.lib" ../../StarcraftBuildOrderSearch/VisualStudio/Release/StarCraftData.obj Release/SparCraft.lib /SDL.lib /SDLmain.lib /opengl32.lib /SDL_image.lib /SDL_gfx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\UAlbertaBot.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Games\StarCraft\StarCraft\bwapi-data\AI\B2WB\UAlbertaBot.pdb" /MAP /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /DLL Release\BuildLearner.obj
          Release\CombatSimulation.obj
+         Release\BaitManager.obj
          Release\MicroSearchManager.obj
          Release\BuildingData.obj
          Release\BuildingManager.obj
@@ -51,15 +52,15 @@
      1>LINK : warning LNK4044: unrecognized option '/opengl32.lib'; ignored
      1>LINK : warning LNK4044: unrecognized option '/SDL_image.lib'; ignored
      1>LINK : warning LNK4044: unrecognized option '/SDL_gfx.lib'; ignored
-            Creating library C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.lib and object C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.exp
+            Creating library ..\..\..\..\..\..\..\..\..\..\Games\StarCraft\StarCraft\bwapi-data\AI\B2WB\UAlbertaBot.lib and object ..\..\..\..\..\..\..\..\..\..\Games\StarCraft\StarCraft\bwapi-data\AI\B2WB\UAlbertaBot.exp
      1>LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
          Generating code
          Finished generating code
-         UAlbertaBot.vcxproj -> C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.dll
+         UAlbertaBot.vcxproj -> C:\Users\Owner\Dropbox\Portabilis\CMPUT 350\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\..\..\..\..\..\..\..\..\..\..\Games\StarCraft\StarCraft\bwapi-data\AI\B2WB\UAlbertaBot.dll
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\UAlbertaBot.dll;#2" /manifest Release\UAlbertaBot.dll.intermediate.manifest
-     1>Done Building Project "C:\Users\Owner\Downloads\Cmput350Project\trunk\UAlbertaBot\src\UAlbertaBot\VisualStudio\UAlbertaBot.vcxproj" (Build target(s)).
+         C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\mt.exe /nologo /verbose /outputresource:"..\..\..\..\..\..\..\..\..\..\Games\StarCraft\StarCraft\bwapi-data\AI\B2WB\UAlbertaBot.dll;#2" /manifest Release\UAlbertaBot.dll.intermediate.manifest
+     1>Done Building Project "C:\Users\Owner\Dropbox\Portabilis\CMPUT 350\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\UAlbertaBot.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:02:17.63
+Time Elapsed 00:00:18.53
