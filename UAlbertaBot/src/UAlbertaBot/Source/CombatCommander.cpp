@@ -27,6 +27,10 @@ void CombatCommander::update(std::set<BWAPI::Unit *> unitsToAssign)
 		WorkerManager::Instance().finishedWithCombatWorkers();
         
 		// Assign defense and attack squads
+
+		//B2WB
+		//assignBaitSquads(unitsToAssign);
+
         assignScoutDefenseSquads();
 		assignDefenseSquads(unitsToAssign);
 		assignAttackSquads(unitsToAssign);
@@ -272,8 +276,20 @@ void CombatCommander::assignAttackVisibleUnits(std::set<BWAPI::Unit *> & unitsTo
 
 	BOOST_FOREACH (BWAPI::Unit * unit, BWAPI::Broodwar->enemy()->getUnits())
 	{
+
 		if (unit->isVisible())
 		{
+			//B2WB Bait
+			bool BAIT = true;
+			if (BAIT)
+			{
+				UnitVector nearbyAllies;
+				MapGrid::Instance().GetUnits(nearbyAllies, BaitManager::Instance().baitPos, 500, true, false);
+				if (nearbyAllies.size() <= 1 && (unit->getDistance(BaitManager::Instance().baitPos) < 300))
+				{
+					return;
+				}
+			}
 			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
 			unitsToAssign.clear();
 

@@ -2,7 +2,6 @@
 
 namespace Options
 {
-
 	namespace Modules							    // toggle various modules of UAlbertaBot, must be const
 	{
         // the default tournament bot modules

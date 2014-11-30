@@ -108,6 +108,9 @@ void Squad::setNearEnemyUnits()
 
 void Squad::setManagerUnits()
 {
+	//B2WB
+	//UnitVector baitUnits;
+
 	UnitVector meleeUnits;
 	UnitVector rangedUnits;
 	UnitVector detectorUnits;
@@ -133,14 +136,15 @@ void Squad::setManagerUnits()
 			{
 				rangedUnits.push_back(unit);
 			}
-			// select melee units
 			else if (unit->getType().groundWeapon().maxRange() <= 32)
 			{
 				meleeUnits.push_back(unit);
 			}
 		}
 	}
-
+	//B2WB
+	//baitManager.setUnits(baitUnits);
+	
 	meleeManager.setUnits(meleeUnits);
 	rangedManager.setUnits(rangedUnits);
 	detectorManager.setUnits(detectorUnits);
