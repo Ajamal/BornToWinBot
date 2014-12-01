@@ -52,7 +52,7 @@ void CombatCommander::assignAttackSquads(std::set<BWAPI::Unit *> & unitsToAssign
 
 	// added if statement. Want to attack together. May add && logic.  
 	if ((unitsToAssign.size() < 10) && (global == 0) && (StrategyManager::Instance().getCurrentStrategy() == 3)) { 
-		BWAPI::Broodwar->printf("There are not 10 units");
+		//BWAPI::Broodwar->printf("There are not 10 units");
 		return; }
 	global = 1;
 
@@ -259,7 +259,7 @@ void CombatCommander::assignAttackRegion(std::set<BWAPI::Unit *> & unitsToAssign
 		// added else if statement. Want to make units attack together. Happens only once.
 		else if (global2 == 0)
 		{
-			BWAPI::Broodwar->printf("there are 10 units clearing units");
+			//BWAPI::Broodwar->printf("there are 10 units clearing units");
 			global2 = 1;
 			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
 			unitsToAssign.clear();
