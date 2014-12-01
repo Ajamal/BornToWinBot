@@ -99,8 +99,8 @@ void StrategyManager::readResults()
 	// read in the name of the read and write directories from settings file
 	struct stat buf;
 
-	//readDir = "bwapi-data/read/";
-	readDir = "bwapi-data/write/";
+	readDir = "bwapi-data/read/";
+	//readDir = "bwapi-data/write/";
 	writeDir = "bwapi-data/write/";
 
 	/*
@@ -161,9 +161,9 @@ void StrategyManager::readResults()
 
 void StrategyManager::writeResults()
 {
-	//readDir = "bwapi-data/read/";
+	readDir = "bwapi-data/read/";
 	// CHANGE FOR FINAL SUBMISSION
-	readDir = "bwapi-data/write/";
+	//readDir = "bwapi-data/write/";
 	writeDir = "bwapi-data/write/";
 
 	std::string writeFile = writeDir + BWAPI::Broodwar->enemy()->getName() + ".txt";
