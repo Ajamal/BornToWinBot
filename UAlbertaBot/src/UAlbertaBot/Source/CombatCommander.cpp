@@ -51,11 +51,16 @@ void CombatCommander::assignAttackSquads(std::set<BWAPI::Unit *> & unitsToAssign
 	if (unitsToAssign.empty()) { return; }
 
 	// added if statement. Want to attack together. May add && logic.  
-	if ((unitsToAssign.size() < 10) && (global == 0) && (StrategyManager::Instance().getCurrentStrategy() == 3)) { 
+	
+	/*
+	if ((unitsToAssign.size() < 10) && (global == 0) && (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::ProtossCustomDragoons)) { 
 		//BWAPI::Broodwar->printf("There are not 10 units");
 		return; }
 	global = 1;
+	*/
 
+	if ((unitsToAssign.size() < 10) && (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::ProtossCustomDragoons) ) { return; }
+	
 	bool workersDefending = false;
 	BOOST_FOREACH (BWAPI::Unit * unit, unitsToAssign)
 	{
@@ -257,10 +262,13 @@ void CombatCommander::assignAttackRegion(std::set<BWAPI::Unit *> & unitsToAssign
 			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack Region")));
 		}
 		// added else if statement. Want to make units attack together. Happens only once.
+		/*
 		else if (global2 == 0)
 		{
 			//BWAPI::Broodwar->printf("there are 10 units clearing units");
 			global2 = 1;
+		*/
+		else if (unitsToAssign.size() < 10) {
 			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
 			unitsToAssign.clear();
 			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack together!!")));
@@ -291,7 +299,6 @@ void CombatCommander::assignAttackVisibleUnits(std::set<BWAPI::Unit *> & unitsTo
 			unitsToAssign.clear();
 
 			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, unit->getPosition(), 1000, "Attack Visible")));
-
 			return;
 		}
 	}

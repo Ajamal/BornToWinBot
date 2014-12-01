@@ -30,12 +30,16 @@ void StrategyManager::addStrategies()
 	
 	//protossOpeningBook[ProtossZealotRush]	= "0";
 	//protossOpeningBook[ProtossDarkTemplar]	= "0 0 0 0 1 3 0 7 5 0 0 12 3 13 0 22 22 22 22 0 1 0";
-    protossOpeningBook[ProtossDarkTemplar]	=     "0 0 0 0 1 0 3 0 7 0 5 0 12 0 13 3 22 22 1 22 22 0 1 0";
-	protossOpeningBook[ProtossDragoons]		= "0 0 0 0 1 0 0 3 0 7 0 0 5 0 0 3 8 6 1 6 6 0 3 1 0 6 6 6";
+    
+	
+	//protossOpeningBook[ProtossDarkTemplar]	=     "0 0 0 0 1 0 3 0 7 0 5 0 12 0 13 3 22 22 1 22 22 0 1 0";
+	//protossOpeningBook[ProtossDragoons]		= "0 0 0 0 1 0 0 3 0 7 0 0 5 0 0 3 8 6 1 6 6 0 3 1 0 6 6 6";
+	
+	
 	protossOpeningBook[ProtossCustomDragoons] = "0 0 0 0 1 0 3 3 0 0 4 1 4 4 0 4 4 0 1 4 3 0 1 0 4 0 4 4 4 4 4 4 4 7 4 5 1 4 4 \
 												8 6 6 1 6 6 6 6 6 6 4 4 4 4 6 6 6 6 4 4 4";
 
-	protossOpeningBook[WorkerRush] = "0";
+	//protossOpeningBook[WorkerRush] = "0";
 
 
 	terranOpeningBook[TerranMarineRush]		= "0 0 0 0 0 1 0 0 3 0 0 3 0 1 0 4 0 0 0 6";
@@ -48,33 +52,33 @@ void StrategyManager::addStrategies()
 		if (enemyRace == BWAPI::Races::Protoss)
 		{
 			usableStrategies.push_back(ProtossZealotRush);
-			usableStrategies.push_back(ProtossDarkTemplar);
-			usableStrategies.push_back(ProtossDragoons);
+			//usableStrategies.push_back(ProtossDarkTemplar);
+			//usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
-			usableStrategies.push_back(WorkerRush);
+			//usableStrategies.push_back(WorkerRush);
 		}
 		else if (enemyRace == BWAPI::Races::Terran)
 		{
 			usableStrategies.push_back(ProtossZealotRush);
-			usableStrategies.push_back(ProtossDarkTemplar);
-			usableStrategies.push_back(ProtossDragoons);
+			//usableStrategies.push_back(ProtossDarkTemplar);
+			//usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
-			usableStrategies.push_back(WorkerRush);
+			//usableStrategies.push_back(WorkerRush);
 		}
 		else if (enemyRace == BWAPI::Races::Zerg)
 		{
 			usableStrategies.push_back(ProtossZealotRush);
-			usableStrategies.push_back(ProtossDragoons);
+			//usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
-			usableStrategies.push_back(WorkerRush);
+			//usableStrategies.push_back(WorkerRush);
 		}
 		else
 		{
 			BWAPI::Broodwar->printf("Enemy Race Unknown");
 			usableStrategies.push_back(ProtossZealotRush);
-			usableStrategies.push_back(ProtossDragoons);
+			//usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
-			usableStrategies.push_back(WorkerRush);
+			//usableStrategies.push_back(WorkerRush);
 		}
 	}
 	else if (selfRace == BWAPI::Races::Terran)
@@ -137,6 +141,12 @@ void StrategyManager::readResults()
 		getline(f_in, line);
 		results[ProtossZealotRush].second = atoi(line.c_str());
 		getline(f_in, line);
+		results[ProtossCustomDragoons].first = atoi(line.c_str());
+		getline(f_in, line);
+		results[ProtossCustomDragoons].second = atoi(line.c_str());
+
+		/*
+		getline(f_in, line);
 		results[ProtossDarkTemplar].first = atoi(line.c_str());
 		getline(f_in, line);
 		results[ProtossDarkTemplar].second = atoi(line.c_str());
@@ -145,18 +155,17 @@ void StrategyManager::readResults()
 		getline(f_in, line);
 		results[ProtossDragoons].second = atoi(line.c_str());
 		getline(f_in, line);
-		results[ProtossCustomDragoons].first = atoi(line.c_str());
-		getline(f_in, line);
-		results[ProtossCustomDragoons].second = atoi(line.c_str());
-		getline(f_in, line);
 		results[WorkerRush].first = atoi(line.c_str());
 		getline(f_in, line);
 		results[WorkerRush].second = atoi(line.c_str());
+		*/
+		
 		f_in.close();
 	}
 
-	BWAPI::Broodwar->printf("Results (%s): (%d %d) (%d %d) (%d %d)", BWAPI::Broodwar->enemy()->getName().c_str(), 
-		results[0].first, results[0].second, results[1].first, results[1].second, results[2].first, results[2].second);
+	BWAPI::Broodwar->printf("Results (%s): (%d %d) (%d %d)", BWAPI::Broodwar->enemy()->getName().c_str(), 
+		results[0].first, results[0].second, results[1].first, results[1].second);
+			//, results[2].first, results[2].second, results[3].first, results[3].second, results[4].first, results[4].second);
 }
 
 void StrategyManager::writeResults()
@@ -173,6 +182,10 @@ void StrategyManager::writeResults()
 
 	f_out << results[ProtossZealotRush].first   << "\n";
 	f_out << results[ProtossZealotRush].second  << "\n";
+	f_out << results[ProtossCustomDragoons].first << "\n";
+	f_out << results[ProtossCustomDragoons].second << "\n";
+
+	/*
 	f_out << results[ProtossDarkTemplar].first  << "\n";
 	f_out << results[ProtossDarkTemplar].second << "\n";
 	f_out << results[ProtossDragoons].first     << "\n";
@@ -181,6 +194,7 @@ void StrategyManager::writeResults()
 	f_out << results[ProtossCustomDragoons].second << "\n";
 	f_out << results[WorkerRush].first << "\n";
 	f_out << results[WorkerRush].second << "\n";
+	*/
 
 	f_out.close();
 }
@@ -225,14 +239,16 @@ void StrategyManager::setStrategy()
 
         std::string enemyName(BWAPI::Broodwar->enemy()->getName());
         
+		/*
         if (enemyName.compare("Skynet") == 0)
         {
             currentStrategy = ProtossDarkTemplar;
         }
-        else
+		else
         {
-            currentStrategy = ProtossZealotRush;
-        }
+		*/
+        currentStrategy = ProtossZealotRush;
+        //}
 	}
 
 }
@@ -427,6 +443,8 @@ const MetaPairVector StrategyManager::getBuildOrderGoal()
 		{
 			return getProtossZealotRushBuildOrderGoal();
 		}
+
+		/*
 		else if (getCurrentStrategy() == ProtossDarkTemplar)
 		{
 			return getProtossDarkTemplarBuildOrderGoal();
@@ -435,11 +453,13 @@ const MetaPairVector StrategyManager::getBuildOrderGoal()
 		{
 			return getProtossDragoonsBuildOrderGoal();
 		}
+		
 		else if (getCurrentStrategy() == ProtossCustomDragoons)
 		{
 			//return getProtossCustomDragoonsBuildOrderGoal();
 		}
 
+		*/
 		// if something goes wrong, use zealot goal
 		return getProtossZealotRushBuildOrderGoal();
 	}
