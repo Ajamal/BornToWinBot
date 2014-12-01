@@ -2,6 +2,7 @@
 
 #include "Common.h"
 #include "micromanagement/MeleeManager.h"
+#include "micromanagement/BaitManager.h"
 #include "micromanagement/RangedManager.h"
 #include "micromanagement/DetectorManager.h"
 #include "micromanagement/TransportManager.h"

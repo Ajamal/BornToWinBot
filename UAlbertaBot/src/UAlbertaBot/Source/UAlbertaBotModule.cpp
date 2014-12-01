@@ -92,7 +92,7 @@ void UAlbertaBotModule::onEnd(bool isWinner)
 
 void UAlbertaBotModule::onFrame()
 {
-	BWAPI::Broodwar->printf("TESTING I/O ON SAME FILE");
+	//BWAPI::Broodwar->printf("Aly-khan Jamal");
 	if (Options::Modules::USING_UNIT_COMMAND_MGR)
 	{
 		UnitCommandManager::Instance().update();

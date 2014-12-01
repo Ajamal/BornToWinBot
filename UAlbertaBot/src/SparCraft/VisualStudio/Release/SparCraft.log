@@ -1,9 +1,11 @@
-﻿Build started 30/11/2014 2:19:00 PM.
-     1>Project "C:\Users\Benjamin\CMPUT 350\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" on node 3 (Build target(s)).
-     1>Lib:
-         SparCraft.vcxproj -> C:\Users\Benjamin\CMPUT 350\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\SparCraft.lib
-     1>Done Building Project "C:\Users\Benjamin\CMPUT 350\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.19
+﻿Build started 11/30/2014 4:59:56 PM.
+     1>Project "C:\Users\User\Desktop\350_StarCraft\Merging room\BornToWinBot-Baiting\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /IC:\Users\User\Desktop\350_StarCraft\boost_1_56_0\ /I"C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\\" /I"C:\Users\User\Desktop\350_StarCraft\BWAPI 3.7.4\\include" /I\include /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\Logger.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\WeaponProperties.cpp
+         AllPlayers.cpp
+         AlphaBetaSearch.cpp
+         AnimationFrameData.cpp
+         Common.cpp
+         Display.cpp
+         EnumData.cpp
+         Game.cpp

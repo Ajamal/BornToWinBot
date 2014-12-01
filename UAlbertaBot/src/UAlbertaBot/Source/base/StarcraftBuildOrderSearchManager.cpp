@@ -248,7 +248,8 @@ std::vector<MetaType> StarcraftBuildOrderSearchManager::getMetaVector(std::strin
 
 void StarcraftBuildOrderSearchManager::drawSearchInformation(int x, int y)
 {
-	starcraftSearchData.drawSearchResults(10, 240);
+	//B2WB disabled in order to see things being printed
+	//starcraftSearchData.drawSearchResults(10, 240);
 }
 
 	
