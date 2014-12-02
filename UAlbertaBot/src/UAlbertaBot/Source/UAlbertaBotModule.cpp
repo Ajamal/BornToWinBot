@@ -53,6 +53,9 @@ void UAlbertaBotModule::onStart()
 		BuildOrderSearch::getStarcraftDataInstance().init(BWAPI::Broodwar->self()->getRace());
 		SparCraft::Hash::initHash();
 	}
+
+	BWAPI::Broodwar->printf("Using strategy #%d", StrategyManager::Instance().getCurrentStrategy());
+
 }
 
 void UAlbertaBotModule::onEnd(bool isWinner) 
@@ -171,7 +174,7 @@ void UAlbertaBotModule::onSendText(std::string text)
 		std::stringstream numUnitType;
 		int numUnits = 0;
 
-		int i=0;
+		size_t i=0;
 		for (i=0; i<text.length(); ++i)
 		{
 			if (text[i] == ' ')

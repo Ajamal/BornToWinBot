@@ -103,8 +103,8 @@ void StrategyManager::readResults()
 	// read in the name of the read and write directories from settings file
 	struct stat buf;
 
-	//readDir = "bwapi-data/write/";
-	readDir = "bwapi-data/read/";
+	readDir = "bwapi-data/write/";
+	//readDir = "bwapi-data/read/";
 	writeDir = "bwapi-data/write/";
 
 	/*

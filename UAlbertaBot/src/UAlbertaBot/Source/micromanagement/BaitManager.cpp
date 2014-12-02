@@ -179,12 +179,71 @@ void BaitManager::initialize_map_points(std::string mapName)
 
 		BWAPI::Broodwar->printf("Map Circuit Breaker Loaded");
 	}
+	else if (mapName == "(4)Empire of the Sun.scm")
+	{
+		//set the point where the bait unit will wait for enemies
+		basePoints.insert(BWAPI::Position(1204, 3426));
+		basePoints.insert(BWAPI::Position(1158, 592));
+		basePoints.insert(BWAPI::Position(2943, 3508));
+		basePoints.insert(BWAPI::Position(2910, 592));
+
+		waitPoint = *basePoints.begin();
+
+		//set the points where the bait unit will flee to
+		chasePoints.push_back(BWAPI::Position(817, 1140));
+		chasePoints.push_back(BWAPI::Position(200, 1569));
+		chasePoints.push_back(BWAPI::Position(720, 1876));
+		chasePoints.push_back(BWAPI::Position(1094, 1461));
+
+		BWAPI::Broodwar->printf("Map Empire of the Sun Loaded");
+	}
+	else if (mapName == "(4)Fortress.scx")
+	{
+		//set the point where the bait unit will wait for enemies
+		basePoints.insert(BWAPI::Position(1693, 3516));
+		basePoints.insert(BWAPI::Position(980, 1692));
+		basePoints.insert(BWAPI::Position(2356, 735));
+		basePoints.insert(BWAPI::Position(3129, 2398));
+
+		waitPoint = *basePoints.begin();
+
+		//set the points where the bait unit will flee to
+		chasePoints.push_back(BWAPI::Position(2094, 3116));
+		chasePoints.push_back(BWAPI::Position(1453, 1214));
+		chasePoints.push_back(BWAPI::Position(1352, 2581));
+		chasePoints.push_back(BWAPI::Position(4696, 1573));
+
+		BWAPI::Broodwar->printf("Map Fortress Loaded");
+	}
+	else if (mapName == "(4)Fortress.scx")
+	{
+		//set the point where the bait unit will wait for enemies
+		basePoints.insert(BWAPI::Position(699, 2051));
+		basePoints.insert(BWAPI::Position(1818, 693));
+		basePoints.insert(BWAPI::Position(3351, 2040));
+		basePoints.insert(BWAPI::Position(2154, 3335));
+
+		waitPoint = *basePoints.begin();
+
+		//set the points where the bait unit will flee to
+		chasePoints.push_back(BWAPI::Position(2919, 3389));
+		chasePoints.push_back(BWAPI::Position(3740, 4051));
+		chasePoints.push_back(BWAPI::Position(3892, 3851));
+		chasePoints.push_back(BWAPI::Position(3388, 3221));
+		chasePoints.push_back(BWAPI::Position(310, 3000));
+
+		BWAPI::Broodwar->printf("Map Fortress Loaded");
+	}
+
+
 	else
 	{
 		mapLoaded = false;
 		BWAPI::Broodwar->printf("Unrecognized Map File Name: %s", &(BWAPI::Broodwar->mapFileName())[0]);
 		//BWAPI::Broodwar->printf(&(BWAPI::Broodwar->mapFileName())[0]);
 	}
+
+
 
 }
 
@@ -329,7 +388,8 @@ void BaitManager::onUnitDestroy(BWAPI::Unit * unit)
 	if (unit->getID() == baitID)
 	{
 		BWAPI::Broodwar->printf("Bait Unit Destroyed");
-		--numBaitUnits;
+		//bait unit stays dead
+		//--numBaitUnits; 
 		beingChased = false;
 		currentDest = 0;
 		baitID = 0;
