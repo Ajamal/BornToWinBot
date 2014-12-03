@@ -1,9 +1,82 @@
-﻿Build started 02/12/2014 8:14:38 AM.
+﻿Build started 02/12/2014 10:58:20 AM.
      1>Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" on node 3 (Build target(s)).
-     1>Lib:
+     1>ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /IC:\Users\Owner\Documents\Programming\Libraries\boost_1_56_0\ /I"C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4" /I"C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4\include" /I\include /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\Logger.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\WeaponProperties.cpp
+         AllPlayers.cpp
+         AlphaBetaSearch.cpp
+         AnimationFrameData.cpp
+         Common.cpp
+         Display.cpp
+         EnumData.cpp
+         Game.cpp
+         GameState.cpp
+         glfont.cc
+         Hash.cpp
+         Logger.cpp
+         MoveArray.cpp
+         Player.cpp
+         PlayerProperties.cpp
+         Player_AlphaBeta.cpp
+         Player_AttackClosest.cpp
+         Player_AttackDPS.cpp
+         Player_AttackWeakest.cpp
+         Player_Cluster.cpp
+         Player_Kiter.cpp
+         Compiling...
+         Player_KiterDPS.cpp
+         Player_Kiter_NOKDPS.cpp
+         Player_NOKDPS.cpp
+         Player_PortfolioGreedySearch.cpp
+         Player_Random.cpp
+         Player_UCT.cpp
+         PortfolioGreedySearch.cpp
+         SparCraft.cpp
+         Timer.cpp
+         TranspositionTable.cpp
+         UCTSearch.cpp
+         Unit.cpp
+         UnitProperties.cpp
+         UnitScriptData.cpp
+         WeaponProperties.cpp
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\Lib.exe /OUT:"C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\SparCraft.lib" /NOLOGO /LTCG Release\AllPlayers.obj
+         Release\AlphaBetaSearch.obj
+         Release\AnimationFrameData.obj
+         Release\Common.obj
+         Release\Display.obj
+         Release\EnumData.obj
+         Release\Game.obj
+         Release\GameState.obj
+         Release\glfont.obj
+         Release\Hash.obj
+         Release\Logger.obj
+         Release\MoveArray.obj
+         Release\Player.obj
+         Release\PlayerProperties.obj
+         Release\Player_AlphaBeta.obj
+         Release\Player_AttackClosest.obj
+         Release\Player_AttackDPS.obj
+         Release\Player_AttackWeakest.obj
+         Release\Player_Cluster.obj
+         Release\Player_Kiter.obj
+         Release\Player_KiterDPS.obj
+         Release\Player_Kiter_NOKDPS.obj
+         Release\Player_NOKDPS.obj
+         Release\Player_PortfolioGreedySearch.obj
+         Release\Player_Random.obj
+         Release\Player_UCT.obj
+         Release\PortfolioGreedySearch.obj
+         Release\SparCraft.obj
+         Release\Timer.obj
+         Release\TranspositionTable.obj
+         Release\UCTSearch.obj
+         Release\Unit.obj
+         Release\UnitProperties.obj
+         Release\UnitScriptData.obj
+         Release\WeaponProperties.obj
          SparCraft.vcxproj -> C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\SparCraft.lib
      1>Done Building Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.20
+Time Elapsed 00:00:59.29

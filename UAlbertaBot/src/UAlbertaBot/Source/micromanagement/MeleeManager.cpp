@@ -16,7 +16,7 @@ void MeleeManager::executeMicro(const UnitVector & targets)
 			!(targets[i]->isLifted()) &&
 			!(targets[i]->getType() == BWAPI::UnitTypes::Zerg_Larva) && 
 			!(targets[i]->getType() == BWAPI::UnitTypes::Zerg_Egg) &&
-			targets[i]->isVisible()) 
+			targets[i]->isVisible())
 		{
 			meleeUnitTargets.push_back(targets[i]);
 		}
@@ -33,8 +33,29 @@ void MeleeManager::executeMicro(const UnitVector & targets)
 			{
 				// find the best target for this meleeUnit
 				BWAPI::Unit * target = getTarget(meleeUnit, meleeUnitTargets);
-				// attack it
-				smartAttackUnit(meleeUnit, target);
+
+				//B2WB if target is a terran bunker check if nearby workers and attack the closest one
+				BWAPI::UnitType type = target->getType();
+				if (type == BWAPI::UnitTypes::Terran_Bunker)
+				{
+					BWAPI::Broodwar->printf("melee unit attacking bunker");
+					UnitVector nearbyEnemies;
+					MapGrid::Instance().GetUnits(nearbyEnemies, target->getPosition(), 150, false, true);
+					int closestDist(100000);
+					BOOST_FOREACH(BWAPI::Unit * unit, nearbyEnemies)
+					{
+						if (unit->getType().isWorker() && meleeUnit->getDistance(unit) < closestDist)
+						{
+							target = unit;
+							closestDist = meleeUnit->getDistance(unit);
+						}
+					}
+				}
+				else
+				{
+					// attack it
+					smartAttackUnit(meleeUnit, target);
+				}
 			}
 			// if there are no targets
 			else
@@ -106,6 +127,11 @@ int MeleeManager::getAttackPriority(BWAPI::Unit * unit)
 	// next priority is worker
 	else if (type.isWorker()) 
 	{
+		//B2WB if the worker is near a terran bunker attack it
+		if (BWAPI::Broodwar->enemy()->getRace() == BWAPI::Races::Terran)
+		{
+
+		}
 		return 9;
 	} 
 	// next is special buildings

@@ -38,6 +38,7 @@ void StrategyManager::addStrategies()
 	
 	protossOpeningBook[ProtossCustomDragoons] = "0 0 0 0 1 0 3 3 0 0 4 1 4 4 0 4 4 0 1 4 3 0 1 0 4 0 4 4 4 4 4 4 4 7 4 5 1 4 4 \
 												8 6 6 1 6 6 6 6 6 6 4 4 4 4 6 6 6 6 4 4 4";
+	protossOpeningBook[WorkerRush] = "0 0 0 0 0";
 
 	//protossOpeningBook[WorkerRush] = "0";
 
@@ -55,7 +56,7 @@ void StrategyManager::addStrategies()
 			//usableStrategies.push_back(ProtossDarkTemplar);
 			//usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
-			//usableStrategies.push_back(WorkerRush);
+			usableStrategies.push_back(WorkerRush);
 		}
 		else if (enemyRace == BWAPI::Races::Terran)
 		{
@@ -63,14 +64,14 @@ void StrategyManager::addStrategies()
 			//usableStrategies.push_back(ProtossDarkTemplar);
 			//usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
-			//usableStrategies.push_back(WorkerRush);
+			usableStrategies.push_back(WorkerRush);
 		}
 		else if (enemyRace == BWAPI::Races::Zerg)
 		{
 			usableStrategies.push_back(ProtossZealotRush);
 			//usableStrategies.push_back(ProtossDragoons);
 			usableStrategies.push_back(ProtossCustomDragoons);
-			//usableStrategies.push_back(WorkerRush);
+			usableStrategies.push_back(WorkerRush);
 		}
 		else
 		{
@@ -137,6 +138,9 @@ void StrategyManager::readResults()
 		std::ifstream f_in(readFile.c_str());
 		std::string line;
 		getline(f_in, line);
+		results[WorkerRush].first = atoi(line.c_str());
+		getline(f_in, line);
+		results[WorkerRush].second = atoi(line.c_str());
 		results[ProtossZealotRush].first = atoi(line.c_str());
 		getline(f_in, line);
 		results[ProtossZealotRush].second = atoi(line.c_str());
@@ -180,6 +184,8 @@ void StrategyManager::writeResults()
 	std::string writeFile = writeDir + BWAPI::Broodwar->enemy()->getName() + ".txt";
 	std::ofstream f_out(writeFile.c_str());
 
+	f_out << results[WorkerRush].first << "\n";
+	f_out << results[WorkerRush].second << "\n";
 	f_out << results[ProtossZealotRush].first   << "\n";
 	f_out << results[ProtossZealotRush].second  << "\n";
 	f_out << results[ProtossCustomDragoons].first << "\n";
@@ -247,7 +253,7 @@ void StrategyManager::setStrategy()
 		else
         {
 		*/
-        currentStrategy = ProtossZealotRush;
+        currentStrategy = WorkerRush;
         //}
 	}
 

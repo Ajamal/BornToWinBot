@@ -215,7 +215,7 @@ void BaitManager::initialize_map_points(std::string mapName)
 
 		BWAPI::Broodwar->printf("Map Fortress Loaded");
 	}
-	else if (mapName == "(4)Fortress.scx")
+	else if (mapName == "(4)Python.scx")
 	{
 		//set the point where the bait unit will wait for enemies
 		basePoints.insert(BWAPI::Position(699, 2051));
@@ -232,7 +232,7 @@ void BaitManager::initialize_map_points(std::string mapName)
 		chasePoints.push_back(BWAPI::Position(3388, 3221));
 		chasePoints.push_back(BWAPI::Position(310, 3000));
 
-		BWAPI::Broodwar->printf("Map Fortress Loaded");
+		BWAPI::Broodwar->printf("Map Python Loaded");
 	}
 
 
@@ -255,12 +255,12 @@ void BaitManager::update(const std::set<BWAPI::Unit *> & baitUnits)
 		BWAPI::Unit * baitUnit = *baitUnits.begin();
 		//BWAPI::Broodwar->printf("Moving Bait Unit");
 		baitPos = baitUnit->getPosition();
-		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawBoxMap(baitUnit->getPosition().x() - 15,
-			baitUnit->getPosition().y() - 15, baitUnit->getPosition().x() + 15, baitUnit->getPosition().y() + 15, BWAPI::Colors::Purple, true);
+		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawBoxMap(baitUnit->getPosition().x() - 3,
+			baitUnit->getPosition().y() - 12, baitUnit->getPosition().x() + 3, baitUnit->getPosition().y() + 12, BWAPI::Colors::Purple, true);
 		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawCircleMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
 			100, BWAPI::Colors::Purple, false);
 		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawCircleMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
-			500, BWAPI::Colors::Green, false);
+			320, BWAPI::Colors::Green, false);
 		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawCircleMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
 			300, BWAPI::Colors::Red, false);
 
@@ -269,16 +269,24 @@ void BaitManager::update(const std::set<BWAPI::Unit *> & baitUnits)
 }
 bool BaitManager::nearbyEnemies(BWAPI::Unit * baitUnit)
 {
-	UnitVector enemyNear;
-	BOOST_FOREACH(BWAPI::Unit * unit, BWAPI::Broodwar->enemy()->getUnits())
+	UnitVector nearbyEnemies;
+	MapGrid::Instance().GetUnits(nearbyEnemies, baitUnit->getPosition(), 300, false, true);
+	bool retreat = false;
+	BOOST_FOREACH(BWAPI::Unit * unit, nearbyEnemies)
 	{
-		if (!unit->getType().isWorker() && (baitUnit->getDistance(unit) < 100))
+		if (baitUnit->isInWeaponRange(unit))
+		{
+			BWAPI::Broodwar->printf("bait within ranged range");
+			lastSeen = unit;
+			retreat = true;
+		}
+		else if (!unit->getType().isWorker() && baitUnit->getDistance(unit) < 100)
 		{
 			lastSeen = unit;
-			return true;
+			retreat = true;
 		}
 	}
-	return false;
+	return retreat;
 }
 
 void BaitManager::runToNext(BWAPI::Unit * baitUnit)
@@ -299,7 +307,7 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 	//BWAPI::Broodwar->printf("Inside of Move Bait");
 	//if at a chasepoint run to the next one if enemies are nearby
 	//BWAPI::Broodwar->printf("current dest is #%d", currentDest);
-	if (beingChased && (baitUnit->getDistance(chasePoints[currentDest]) < 3))/*(baitUnit->getPosition().x() > chasePoints[currentDest].x() - 2) && (baitUnit->getPosition().x() < chasePoints[currentDest].x() + 2) 
+	if (beingChased && (baitUnit->getDistance(chasePoints[currentDest]) < 8))/*(baitUnit->getPosition().x() > chasePoints[currentDest].x() - 2) && (baitUnit->getPosition().x() < chasePoints[currentDest].x() + 2) 
 		|| (baitUnit->getPosition().y() > chasePoints[currentDest].y() - 2) && (baitUnit->getPosition().y() < chasePoints[currentDest].y() + 2))*/
 	{
 		//BWAPI::Broodwar->printf("unit at dest #%d", currentDest);
@@ -333,11 +341,17 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 					else
 					{
 					*/
-					baitUnit->move(lastSeen->getPosition());
-					BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
-						waitPoint.x(), waitPoint.y(),
-						BWAPI::Colors::Purple);
-					
+					if (lastSeen->getType().groundWeapon() > 32)
+					{
+						baitUnit->holdPosition();
+					}
+					else
+					{
+						baitUnit->move(lastSeen->getPosition());
+						BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
+							waitPoint.x(), waitPoint.y(),
+							BWAPI::Colors::Purple);
+					}
 				}
 			}
 			else

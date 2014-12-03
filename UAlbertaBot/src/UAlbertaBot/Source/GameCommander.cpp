@@ -11,14 +11,15 @@ void GameCommander::update()
 {
 	timerManager.startTimer(TimerManager::All);
 	
-
-	// economy and base managers
-	timerManager.startTimer(TimerManager::Worker);
 	// populate the unit vectors we will pass into various managers
 	populateUnitVectors();
-	WorkerManager::Instance().update();
-	timerManager.stopTimer(TimerManager::Worker);
 
+	if (!StrategyManager::Instance().getCurrentStrategy() == StrategyManager::WorkerRush)
+	{
+		timerManager.startTimer(TimerManager::Worker);
+		WorkerManager::Instance().update();
+		timerManager.stopTimer(TimerManager::Worker);
+	}
 	timerManager.startTimer(TimerManager::Production);
 	ProductionManager::Instance().update();
 	timerManager.stopTimer(TimerManager::Production);
@@ -194,10 +195,13 @@ void GameCommander::setCombatUnits()
 {
 	combatUnits.clear();
 
-	BOOST_FOREACH (BWAPI::Unit * unit, validUnits)
+	BOOST_FOREACH(BWAPI::Unit * unit, validUnits)
 	{
-		if (!isAssigned(unit) && isCombatUnit(unit))		
-		{	
+		//B2WB Worker Rush
+		if (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::WorkerRush);
+		//BWAPI::Broodwar->printf("validUnits:", validUnits.size(), "assignedUnits:", assignedUnits.size());
+		if (!isAssigned(unit) && (isCombatUnit(unit) || ((StrategyManager::Instance().getCurrentStrategy() == StrategyManager::WorkerRush) && (unit->getType().isWorker()))))
+		{
 			combatUnits.insert(unit);
 			assignedUnits.insert(unit);
 		}
@@ -218,7 +222,7 @@ void GameCommander::setCombatUnits()
 				{
 					combatUnits.insert(unit);
 					assignedUnits.insert(unit);
-                    workersToDefend--;
+					if (!StrategyManager::Instance().getCurrentStrategy() == StrategyManager::WorkerRush) workersToDefend--;
 				}
 
                 if (workersToDefend <= 0)

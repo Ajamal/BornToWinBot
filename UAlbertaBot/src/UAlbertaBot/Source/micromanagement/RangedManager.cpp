@@ -33,6 +33,22 @@ void RangedManager::executeMicro(const UnitVector & targets)
 				// find the best target for this zealot
 				BWAPI::Unit * target = getTarget(rangedUnit, rangedUnitTargets);
 
+				//B2WB if target is a terran bunker check if nearby workers
+				if (target->getType() == BWAPI::UnitTypes::Terran_Bunker)
+				{
+					UnitVector nearbyEnemies;
+					MapGrid::Instance().GetUnits(nearbyEnemies, target->getPosition(), 150, false, true);
+					int lowestHealth(100000);
+					BOOST_FOREACH(BWAPI::Unit * unit, nearbyEnemies)
+					{
+						if (unit->getType().isWorker() && unit->getHitPoints() < lowestHealth)
+						{
+							target = unit;
+							lowestHealth = unit->getHitPoints();
+						}
+					}
+				}
+
 				// attack it
 				kiteTarget(rangedUnit, target);
 			}

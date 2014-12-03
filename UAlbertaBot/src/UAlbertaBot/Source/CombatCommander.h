@@ -24,6 +24,7 @@ class CombatCommander
 	void				assignAttackSquads(std::set<BWAPI::Unit *> & combatUnits);
 	void				assignIdleSquads(std::set<BWAPI::Unit *> & combatUnits);
 
+	void				assignWorkerRush(std::set<BWAPI::Unit *> & unitsToAssign); //B2WB Worker Rush
 	void				assignAttackRegion(std::set<BWAPI::Unit *> & unitsToAssign);
 	void				assignAttackVisibleUnits(std::set<BWAPI::Unit *> & unitsToAssign);
 	void				assignAttackKnownBuildings(std::set<BWAPI::Unit *> & unitsToAssign);

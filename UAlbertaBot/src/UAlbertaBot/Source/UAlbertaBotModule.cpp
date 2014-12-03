@@ -96,6 +96,7 @@ void UAlbertaBotModule::onEnd(bool isWinner)
 void UAlbertaBotModule::onFrame()
 {
 	//BWAPI::Broodwar->printf("Aly-khan Jamal");
+	BWAPI::Broodwar->printf("Using strategy #%d", StrategyManager::Instance().getCurrentStrategy());
 	if (Options::Modules::USING_UNIT_COMMAND_MGR)
 	{
 		UnitCommandManager::Instance().update();
