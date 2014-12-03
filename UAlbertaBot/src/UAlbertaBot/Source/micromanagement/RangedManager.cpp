@@ -34,7 +34,8 @@ void RangedManager::executeMicro(const UnitVector & targets)
 				BWAPI::Unit * target = getTarget(rangedUnit, rangedUnitTargets);
 
 				//B2WB if target is a terran bunker check if nearby workers
-				if (target->getType() == BWAPI::UnitTypes::Terran_Bunker)
+				BWAPI::UnitType type = target->getType();
+				if (type == BWAPI::UnitTypes::Terran_Bunker)
 				{
 					UnitVector nearbyEnemies;
 					MapGrid::Instance().GetUnits(nearbyEnemies, target->getPosition(), 150, false, true);

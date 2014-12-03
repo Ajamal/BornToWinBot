@@ -16,7 +16,7 @@ public:
 	bool			hasBaited;
 	bool			mapLoaded;
 	int				baitID;
-	int				numDeaths;
+	int				waitTime;
 	BWAPI::Position	baitPos;
 
 	static	BaitManager & Instance();

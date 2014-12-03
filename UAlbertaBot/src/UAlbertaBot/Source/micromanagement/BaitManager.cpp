@@ -3,7 +3,7 @@
 #include "InformationManager.h"
 #include "MicroManager.h"
 
-BaitManager::BaitManager() : numBaitUnits(0), hasBaited(false), beingChased(false), currentDest(0), mapLoaded(false), baitID(0), numDeaths(0), baitPos(BWAPI::Position(-500,-500))
+BaitManager::BaitManager() : numBaitUnits(0), hasBaited(false), beingChased(false), currentDest(0), mapLoaded(false), baitID(0), waitTime(0), baitPos(BWAPI::Position(-500,-500))
 {}
 
 // get an instance of this
@@ -274,7 +274,7 @@ bool BaitManager::nearbyEnemies(BWAPI::Unit * baitUnit)
 	bool retreat = false;
 	BOOST_FOREACH(BWAPI::Unit * unit, nearbyEnemies)
 	{
-		if (baitUnit->isInWeaponRange(unit))
+		if ((unit->getType().groundWeapon().maxRange() > 32) && (baitUnit->getDistance(unit) < 200))
 		{
 			BWAPI::Broodwar->printf("bait within ranged range");
 			lastSeen = unit;
@@ -323,40 +323,31 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 	if (beingChased)
 	{
 		//BWAPI::Broodwar->printf("Being chased not at point");
-		if (!nearbyEnemies(baitUnit))
+		if (!nearbyEnemies(baitUnit) && !baitUnit->isUnderAttack())
 		{
-			//BWAPI::Broodwar->printf("Hold Position True");
-			//baitUnit->holdPosition();
 			if (lastSeen)
 			{
 				if (lastSeen->exists())
 				{
-					//if the enemy is near allied units stop following and return to wait point
-					/*
-					UnitVector nearbyUnits;
-					MapGrid::Instance().GetUnits(nearbyUnits, lastSeen->getPosition(), 300, true, false);
-					if (nearbyUnits.size() > 1){
-						beingChased = false;
-					}
-					else
-					{
-					*/
-					if (lastSeen->getType().groundWeapon() > 32)
+					if (lastSeen->getType().groundWeapon().maxRange() > 32)
 					{
 						baitUnit->holdPosition();
+						waitTime++;
+					}
+					else if (baitUnit->isHoldingPosition() && waitTime > 250)
+					{
+						currentDest = 0;
+						beingChased = false;
+						baitUnit->move(waitPoint);
 					}
 					else
 					{
 						baitUnit->move(lastSeen->getPosition());
 						BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
-							waitPoint.x(), waitPoint.y(),
+							lastSeen->getPosition().x(), lastSeen->getPosition().y(),
 							BWAPI::Colors::Purple);
 					}
 				}
-			}
-			else
-			{
-				lastSeen = NULL;
 			}
 		}
 		else /*if (baitUnit->isHoldingPosition())*/
@@ -398,7 +389,7 @@ void BaitManager::onUnitDestroy(BWAPI::Unit * unit)
 	{
 		assert(false);
 	}
-	// if the unit that was destroyed is a bait
+	// if the unit that was destroyed is the bait
 	if (unit->getID() == baitID)
 	{
 		BWAPI::Broodwar->printf("Bait Unit Destroyed");
@@ -407,6 +398,5 @@ void BaitManager::onUnitDestroy(BWAPI::Unit * unit)
 		beingChased = false;
 		currentDest = 0;
 		baitID = 0;
-		++numDeaths;
 	}
 }

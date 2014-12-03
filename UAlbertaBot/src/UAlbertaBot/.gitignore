@@ -1,4 +1,4 @@
-VisualStudio/Release
-VisualStudio/Debug
+VisualStudio/Release/*
+VisualStudio/Debug/*
 bin/*
 source/*.o

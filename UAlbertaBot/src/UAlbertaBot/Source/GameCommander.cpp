@@ -198,8 +198,6 @@ void GameCommander::setCombatUnits()
 	BOOST_FOREACH(BWAPI::Unit * unit, validUnits)
 	{
 		//B2WB Worker Rush
-		if (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::WorkerRush);
-		//BWAPI::Broodwar->printf("validUnits:", validUnits.size(), "assignedUnits:", assignedUnits.size());
 		if (!isAssigned(unit) && (isCombatUnit(unit) || ((StrategyManager::Instance().getCurrentStrategy() == StrategyManager::WorkerRush) && (unit->getType().isWorker()))))
 		{
 			combatUnits.insert(unit);

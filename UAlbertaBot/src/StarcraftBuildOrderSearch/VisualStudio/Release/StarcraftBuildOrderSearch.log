@@ -1,5 +1,5 @@
-﻿Build started 02/12/2014 10:58:19 AM.
-     1>Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\StarcraftBuildOrderSearch.vcxproj" on node 2 (Build target(s)).
+﻿Build started 02/12/2014 9:33:06 PM.
+     1>Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\StarcraftBuildOrderSearch.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /IC:\Users\Owner\Documents\Programming\Libraries\boost_1_56_0\ /I"C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Source\starcraftsearch\StarcraftData.cpp ..\Source\starcraftsearch\test.cpp
          StarcraftData.cpp
@@ -12,8 +12,8 @@
          StarcraftBuildOrderSearch.vcxproj -> C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Release\StarcraftBuildOrderSearch.exe
        Manifest:
          C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\Release\StarcraftBuildOrderSearch.exe;#1" /manifest Release\StarcraftBuildOrderSearch.exe.intermediate.manifest
-     1>Done Building Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\StarcraftBuildOrderSearch.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\StarcraftBuildOrderSearch\VisualStudio\StarcraftBuildOrderSearch.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:10.09
+Time Elapsed 00:00:09.54

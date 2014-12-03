@@ -4,6 +4,7 @@
 bool wait; 
 bool charge;
 
+
 CombatCommander::CombatCommander() 
 	: attacking(false)
 	, foundEnemy(false)
@@ -259,37 +260,37 @@ void CombatCommander::assignScoutDefenseSquads()
 
 		// all of the enemy units in this region
 		std::set<BWAPI::Unit *> enemyUnitsInRegion;
-		BOOST_FOREACH (BWAPI::Unit * enemyUnit, BWAPI::Broodwar->enemy()->getUnits())
-		{			
+		BOOST_FOREACH(BWAPI::Unit * enemyUnit, BWAPI::Broodwar->enemy()->getUnits())
+		{
 			if (BWTA::getRegion(BWAPI::TilePosition(enemyUnit->getPosition())) == myRegion)
 			{
 				enemyUnitsInRegion.insert(enemyUnit);
 			}
 		}
 
-        // special case: figure out if the only attacker is a worker, the enemy is scouting
-        if (enemyUnitsInRegion.size() == 1 && (*enemyUnitsInRegion.begin())->getType().isWorker())
-        {
-            // the enemy worker that is attacking us
-            BWAPI::Unit * enemyWorker       = *enemyUnitsInRegion.begin();
+		// special case: figure out if the only attacker is a worker, the enemy is scouting
+		if (enemyUnitsInRegion.size() == 1 && (*enemyUnitsInRegion.begin())->getType().isWorker())
+		{
+			// the enemy worker that is attacking us
+			BWAPI::Unit * enemyWorker = *enemyUnitsInRegion.begin();
 
-            // get our worker unit that is mining that is closest to it
-            BWAPI::Unit * workerDefender    = WorkerManager::Instance().getClosestMineralWorkerTo(enemyWorker);
+			// get our worker unit that is mining that is closest to it
+			BWAPI::Unit * workerDefender = WorkerManager::Instance().getClosestMineralWorkerTo(enemyWorker);
 
-            // grab it from the worker manager
-            WorkerManager::Instance().setCombatWorker(workerDefender);
-            
-            // put it into a unit vector
-            UnitVector workerDefenseForce;
-            workerDefenseForce.push_back(workerDefender);
+			// grab it from the worker manager
+			WorkerManager::Instance().setCombatWorker(workerDefender);
 
-            // make a squad using the worker to defend
-            squadData.addSquad(Squad(workerDefenseForce, SquadOrder(SquadOrder::Defend, regionCenter, 1000, "Get That Scout!")));
+			// put it into a unit vector
+			UnitVector workerDefenseForce;
+			workerDefenseForce.push_back(workerDefender);
+
+			// make a squad using the worker to defend
+			squadData.addSquad(Squad(workerDefenseForce, SquadOrder(SquadOrder::Defend, regionCenter, 1000, "Get That Scout!")));
 
 			// seeing that not all workers go after one enemy.
 			//workerDefenseForce.clear();
 			return;
-        }
+		}
 	}
 }
 

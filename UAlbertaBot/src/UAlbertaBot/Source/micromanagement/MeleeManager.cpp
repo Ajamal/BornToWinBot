@@ -38,7 +38,6 @@ void MeleeManager::executeMicro(const UnitVector & targets)
 				BWAPI::UnitType type = target->getType();
 				if (type == BWAPI::UnitTypes::Terran_Bunker)
 				{
-					BWAPI::Broodwar->printf("melee unit attacking bunker");
 					UnitVector nearbyEnemies;
 					MapGrid::Instance().GetUnits(nearbyEnemies, target->getPosition(), 150, false, true);
 					int closestDist(100000);

@@ -569,6 +569,8 @@ void ProductionManager::drawProductionInformation(int x, int y)
 	if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawTextScreen(x, y, "\x04 Build Order Info:");
 	if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawTextScreen(x, y+20, "\x04UNIT NAME");
 
+	
+
 	size_t reps = prod.size() < 10 ? prod.size() : 10;
 
 	y += 40;
