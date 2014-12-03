@@ -274,13 +274,12 @@ bool BaitManager::nearbyEnemies(BWAPI::Unit * baitUnit)
 	bool retreat = false;
 	BOOST_FOREACH(BWAPI::Unit * unit, nearbyEnemies)
 	{
-		if ((unit->getType().groundWeapon().maxRange() > 32) && (baitUnit->getDistance(unit) < 200))
+		if ((!unit->getType().isBuilding() && unit->getType().groundWeapon().maxRange() > 32) && (baitUnit->getDistance(unit) < 200))
 		{
-			BWAPI::Broodwar->printf("bait within ranged range");
 			lastSeen = unit;
 			retreat = true;
 		}
-		else if (!unit->getType().isWorker() && baitUnit->getDistance(unit) < 100)
+		else if (!unit->getType().isBuilding() && !unit->getType().isWorker() && baitUnit->getDistance(unit) < 100)
 		{
 			lastSeen = unit;
 			retreat = true;
@@ -336,6 +335,7 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 					}
 					else if (baitUnit->isHoldingPosition() && waitTime > 250)
 					{
+						waitTime = 0;
 						currentDest = 0;
 						beingChased = false;
 						baitUnit->move(waitPoint);

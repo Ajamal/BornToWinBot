@@ -3,6 +3,12 @@
 
 ## I got this from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+UAlbertaBot/src/UAlbertaBot/VisualStudio/Release/*
+UAlbertaBot/src/UAlbertaBot/VisualStudio/Debug/*
+
+UAlbertaBot\src\UAlbertaBot\VisualStudio\Release\*
+UAlbertaBot\src\UAlbertaBot\VisualStudio\Debug\*
+
 # User-specific files
 *.suo
 *.user
