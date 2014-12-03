@@ -104,8 +104,8 @@ void StrategyManager::readResults()
 	// read in the name of the read and write directories from settings file
 	struct stat buf;
 
-	readDir = "bwapi-data/write/";
-	//readDir = "bwapi-data/read/";
+	//readDir = "bwapi-data/write/";
+	readDir = "bwapi-data/read/";
 	writeDir = "bwapi-data/write/";
 
 	/*
@@ -141,6 +141,7 @@ void StrategyManager::readResults()
 		results[WorkerRush].first = atoi(line.c_str());
 		getline(f_in, line);
 		results[WorkerRush].second = atoi(line.c_str());
+		getline(f_in, line);
 		results[ProtossZealotRush].first = atoi(line.c_str());
 		getline(f_in, line);
 		results[ProtossZealotRush].second = atoi(line.c_str());
