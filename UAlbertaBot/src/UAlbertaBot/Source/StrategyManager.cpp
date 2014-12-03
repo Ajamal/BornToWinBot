@@ -260,7 +260,7 @@ void StrategyManager::setStrategy()
         {
 		*/
         
-		currentStrategy = ProtossZealotRush;
+		currentStrategy = WorkerRush;
         
 		//}
 	}

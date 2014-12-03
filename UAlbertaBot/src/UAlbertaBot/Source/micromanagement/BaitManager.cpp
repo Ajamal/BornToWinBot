@@ -306,14 +306,11 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 	//BWAPI::Broodwar->printf("Inside of Move Bait");
 	//if at a chasepoint run to the next one if enemies are nearby
 	//BWAPI::Broodwar->printf("current dest is #%d", currentDest);
-	if (beingChased && (baitUnit->getDistance(chasePoints[currentDest]) < 8))/*(baitUnit->getPosition().x() > chasePoints[currentDest].x() - 2) && (baitUnit->getPosition().x() < chasePoints[currentDest].x() + 2) 
-		|| (baitUnit->getPosition().y() > chasePoints[currentDest].y() - 2) && (baitUnit->getPosition().y() < chasePoints[currentDest].y() + 2))*/
+	if (beingChased && (baitUnit->getDistance(chasePoints[currentDest]) < 8))
 	{
-		//BWAPI::Broodwar->printf("unit at dest #%d", currentDest);
 		if (nearbyEnemies(baitUnit))
 		{
 			runToNext(baitUnit);
-			//BWAPI::Broodwar->printf("running to dest #%d", currentDest);
 		}
 		return;
 	}
@@ -321,7 +318,6 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 	//wait for pursuers to catch up or continue running
 	if (beingChased)
 	{
-		//BWAPI::Broodwar->printf("Being chased not at point");
 		if (!nearbyEnemies(baitUnit) && !baitUnit->isUnderAttack())
 		{
 			if (lastSeen)
@@ -350,7 +346,7 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 				}
 			}
 		}
-		else /*if (baitUnit->isHoldingPosition())*/
+		else 
 		{
 			baitUnit->move(chasePoints[currentDest]);
 			if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
@@ -360,27 +356,33 @@ void BaitManager::moveBait(BWAPI::Unit * baitUnit)
 		return;
 	}
 
-	//if not being chased head to the nearest wait point
-	if (!beingChased){
-		//BWAPI::Broodwar->printf("Not Being Chased");
+	//if not being chased head to the wait point
+	if (!beingChased && !baitUnit->isUnderAttack()){
 		if (nearbyEnemies(baitUnit))
 		{
 			runToNext(baitUnit);
 			return;
 		}
-		//BWAPI::Broodwar->printf("Moving Unit to wait point");
+		if (baitUnit->getDistance(waitPoint) < 5)
+		{
+			if (++waitTime > 500)
+			{
+				baitUnit->move(waitPoint);
+				if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
+					waitPoint.x(), waitPoint.y(), BWAPI::Colors::Purple);
+				waitTime = 0;
+			}
+			return;
+		}
 		baitUnit->move(waitPoint);
-
-
-
-		//BWAPI::Broodwar->printf("(%d, %d)",baitUnit->getPosition().x(),baitUnit->getPosition().y());
-		//if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawTextScreen(baitUnit->getPosition().x(), baitUnit->getPosition().y(), "Bait");
-		//if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawTextScreen(waitPoint.x(), waitPoint.y(), "WaitPosition");
 		if (Options::Debug::DRAW_UALBERTABOT_DEBUG) BWAPI::Broodwar->drawLineMap(baitUnit->getPosition().x(), baitUnit->getPosition().y(),
 			waitPoint.x(), waitPoint.y(), BWAPI::Colors::Purple);
 		return;
 	}
-	BWAPI::Broodwar->printf("Entering no If statements");
+	else if (baitUnit->isUnderAttack())
+	{
+		runToNext(baitUnit);
+	}
 }
 
 void BaitManager::onUnitDestroy(BWAPI::Unit * unit)
@@ -398,5 +400,6 @@ void BaitManager::onUnitDestroy(BWAPI::Unit * unit)
 		beingChased = false;
 		currentDest = 0;
 		baitID = 0;
+		baitPos = BWAPI::Position(-500, -500);
 	}
 }

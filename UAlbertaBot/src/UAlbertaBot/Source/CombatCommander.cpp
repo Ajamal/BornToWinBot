@@ -4,7 +4,6 @@
 bool wait; 
 bool charge;
 
-
 CombatCommander::CombatCommander() 
 	: attacking(false)
 	, foundEnemy(false)
@@ -165,7 +164,7 @@ void CombatCommander::assignWorkerRush(std::set<BWAPI::Unit *> & unitsToAssign)
 			}
 		}
 		//split off 2 workers to check a second loaction 
-		if (unitsToAssign.size() > 2 && unexplored_locations.size() > 1)
+		if (unitsToAssign.size() > 2 && unexplored_locations.size())
 		{
 			UnitVector party1(unitsToAssign.begin(), ++++unitsToAssign.begin());
 			unitsToAssign.erase(unitsToAssign.begin());
@@ -430,8 +429,7 @@ void CombatCommander::assignAttackVisibleUnits(std::set<BWAPI::Unit *> & unitsTo
 		if (unit->isVisible())
 		{
 			//B2WB Bait
-			bool BAIT = true;
-			if (BAIT)
+			if (BaitManager::Instance().baitID != 0)
 			{
 				UnitVector nearbyAllies;
 				MapGrid::Instance().GetUnits(nearbyAllies, BaitManager::Instance().baitPos, 320, true, false);
