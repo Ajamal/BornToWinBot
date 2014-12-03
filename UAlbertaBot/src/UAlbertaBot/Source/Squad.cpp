@@ -157,6 +157,7 @@ bool Squad::needsToRegroup()
 		return false;
 	}
 
+	// Not supported by BornToWinBot
 	// if we are DT rushing and we haven't lost a DT yet, no retreat!
 	/*
 	if (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::ProtossDarkTemplar &&
