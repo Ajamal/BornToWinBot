@@ -70,7 +70,8 @@ class StrategyManager
 public:
 
 	enum { WorkerRush=0, ProtossZealotRush=1, ProtossCustomDragoons=2, NumProtossStrategies = 3};
-		//ProtossDarkTemplar=1, ProtossDragoons=2, ProtossCustomDragoons=3, WorkerRush=4, NumProtossStrategies=5 };
+		// Not supported by BornToWinBot
+		//ProtossDarkTemplar=1, ProtossDragoons=2, NumProtossStrategies=3 };
 	enum { TerranMarineRush=0, NumTerranStrategies=1 };
 	enum { ZergZerglingRush=0, NumZergStrategies=1 };
 
