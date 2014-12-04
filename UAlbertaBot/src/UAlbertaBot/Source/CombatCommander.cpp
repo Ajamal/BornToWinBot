@@ -54,30 +54,14 @@ struct StartPosComp
 		return true;
 	}
 };
-//used to return the closest position to base for a set of positions
-struct mainPosComp
-{
-	bool operator()(const BWAPI::Position lhs, const BWAPI::Position rhs)
-	{
-		if (lhs.getDistance(InformationManager::Instance().getMainBaseLocation(BWAPI::Broodwar->self())->getPosition()) <
-			rhs.getDistance(InformationManager::Instance().getMainBaseLocation(BWAPI::Broodwar->self())->getPosition())) return true;
-		//ensure each position gets added to the set
-		if (lhs.getDistance(InformationManager::Instance().getMainBaseLocation(BWAPI::Broodwar->self())->getPosition()) >
-			rhs.getDistance(InformationManager::Instance().getMainBaseLocation(BWAPI::Broodwar->self())->getPosition())) return false;
-		return true;
-	}
-};
+
 //B2WB worker rush
 void CombatCommander::assignWorkerRush(std::set<BWAPI::Unit *> & unitsToAssign)
 {
 	if (unitsToAssign.empty()) { return; }
 
-	//BWTA::Region * enemyRegion = getClosestEnemyRegion();
 	BWTA::BaseLocation * enemyBaseLocation = InformationManager::Instance().getMainBaseLocation(BWAPI::Broodwar->enemy());
 	BWTA::Region * enemyRegion = enemyBaseLocation ? enemyBaseLocation->getRegion() : NULL;
-
-	//UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
-	//unitsToAssign.clear();
 
 	if (enemyRegion && enemyRegion->getCenter().isValid())
 	{
@@ -104,7 +88,6 @@ void CombatCommander::assignWorkerRush(std::set<BWAPI::Unit *> & unitsToAssign)
 		//focus attack on on enemy workers next to enemy base
 		BOOST_FOREACH(BWAPI::Unit * unit, BWAPI::Broodwar->enemy()->getUnits())
 		{
-			//BWAPI::Broodwar->printf("Distance: %d", unit->getDistance(enemyBaseLocation->getPosition()));
 			if (unit->getType().isWorker() && (unit->getDistance(enemyBaseLocation->getPosition()) < 200))
 			{
 				(*combatUnits.begin())->stop(); //ensures at least one unit stops what its doing and attacks
@@ -163,22 +146,34 @@ void CombatCommander::assignWorkerRush(std::set<BWAPI::Unit *> & unitsToAssign)
 				unexplored_locations.insert(startLocation->getPosition());
 			}
 		}
-		//split off 2 workers to check a second loaction 
-		if (unitsToAssign.size() > 2 && unexplored_locations.size())
-		{
-			UnitVector party1(unitsToAssign.begin(), ++++unitsToAssign.begin());
-			unitsToAssign.erase(unitsToAssign.begin());
-			unitsToAssign.erase(unitsToAssign.begin());
-
-			squadData.addSquad(Squad(party1, SquadOrder(SquadOrder::Attack, (*unexplored_locations.begin()), 100, "Search1")));
-			unexplored_locations.erase(unexplored_locations.begin());
-		}
+		BWAPI::Position next;
 		UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
 		unitsToAssign.clear();
-		squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, (*unexplored_locations.begin()), 100, "Search2")));
-
+		//if its a 4 player map go to the possible base location closest to our base
+		if (unexplored_locations.size() > 2)
+		{
+			next = *unexplored_locations.begin();
+		}
+		//if there are only 2 possible locations go to the location closest to one worker 
+		else if (unexplored_locations.size() == 2)
+		{
+			if ((*combatUnits.begin())->getDistance(*unexplored_locations.begin()) <
+				(*combatUnits.begin())->getDistance(*++unexplored_locations.begin()))
+			{
+				next = *unexplored_locations.begin();
+			}
+			else next = *++unexplored_locations.begin();
+		}
+		squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, next, 100, "Search")));
+		return;
 	}
-	return;
+	//if none of the above fires and unit is doing nothing return to defend main base
+	if ((*unitsToAssign.begin())->isIdle())
+	{
+		UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());
+		unitsToAssign.clear();
+		squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, InformationManager::Instance().getMainBaseLocation(BWAPI::Broodwar->self())->getPosition(), 1000, "Defend")));
+	}
 }
 void CombatCommander::assignIdleSquads(std::set<BWAPI::Unit *> & unitsToAssign)
 {
@@ -201,7 +196,7 @@ void CombatCommander::assignAttackSquads(std::set<BWAPI::Unit *> & unitsToAssign
 	bool workersDefending = false;
 	BOOST_FOREACH (BWAPI::Unit * unit, unitsToAssign)
 	{
-		if (unit->getType().isWorker())
+		if (unit->getType().isWorker() && !StrategyManager::Instance().getCurrentStrategy() == StrategyManager::WorkerRush)
 		{
 			workersDefending = true;
 		}
