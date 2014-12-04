@@ -195,14 +195,8 @@ void CombatCommander::assignAttackSquads(std::set<BWAPI::Unit *> & unitsToAssign
 {
 	if (unitsToAssign.empty()) { return; }
 
-	// added if statement. Want to attack together. May add && logic.  
-	
-	/*
-	if ((unitsToAssign.size() < 10) && (global == 0) && (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::ProtossCustomDragoons)) { 
-		//BWAPI::Broodwar->printf("There are not 10 units");
-		return; }
-	global = 1;
-	*/
+	// added if statement. Want to attack together. May add && logic.
+	// First 6 Zealots will wait at base when using ProtossCustomDragoons strategy.
 	if ((unitsToAssign.size() < 6) && (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::ProtossCustomDragoons) && !charge ) { return; }
 	
 	bool workersDefending = false;
@@ -406,12 +400,7 @@ void CombatCommander::assignAttackRegion(std::set<BWAPI::Unit *> & unitsToAssign
 			squadData.addSquad(Squad(combatUnits, SquadOrder(SquadOrder::Attack, enemyRegion->getCenter(), 1000, "Attack Region")));
 		}
 		// added else if statement. Want to make units attack together. Happens only once.
-		/*
-		else if (global2 == 0)
-		{
-			//BWAPI::Broodwar->printf("there are 10 units clearing units");
-			global2 = 1;
-		*/
+		// First 6 Zealots will attack together when using ProtossCustomDragoon strategy.
 		else if (unitsToAssign.size() >= 6 && (StrategyManager::Instance().getCurrentStrategy() == StrategyManager::ProtossCustomDragoons) && !charge) {
 			charge = 1;
 			UnitVector combatUnits(unitsToAssign.begin(), unitsToAssign.end());

@@ -189,6 +189,7 @@ bool Squad::needsToRegroup()
 	//retreat tactics
 	if ((numDragoons) >= 8)
 	{
+		// Set retreat to false if we have at least 8 dragoons.
 		retreat = false;
 	}
 	
