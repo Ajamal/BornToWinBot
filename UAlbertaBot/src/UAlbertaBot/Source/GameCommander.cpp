@@ -37,13 +37,10 @@ void GameCommander::update()
 	timerManager.stopTimer(TimerManager::Combat);
 
 	//B2WB Bait
-	bool Bait = true;
-	if (Bait)
-	{
-		timerManager.startTimer(TimerManager::Bait);
-		BaitManager::Instance().update(baitUnits);
-		timerManager.stopTimer(TimerManager::Bait);
-	}
+	timerManager.startTimer(TimerManager::Bait);
+	BaitManager::Instance().update(baitUnits);
+	timerManager.stopTimer(TimerManager::Bait);
+
 
 	timerManager.startTimer(TimerManager::Scout);
 	if (Options::Modules::USING_SCOUTMANAGER)
@@ -102,12 +99,9 @@ void GameCommander::populateUnitVectors()
 	setValidUnits();
 
 	// set each type of unit
-	//B2WB Bait
-	bool BAIT = true;
-	if (BAIT)
-	{
-		setBaitUnits();
-	}
+	//B2WB Bait	{
+	setBaitUnits();
+
 	setScoutUnits();
 	setCombatUnits();
 	setWorkerUnits();

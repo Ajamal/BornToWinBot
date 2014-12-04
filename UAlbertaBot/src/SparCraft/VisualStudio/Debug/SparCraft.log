@@ -1,9 +1,86 @@
-﻿Build started 02/12/2014 6:55:13 PM.
+﻿Build started 03/12/2014 2:50:54 PM.
      1>Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" on node 3 (Build target(s)).
-     1>Lib:
+     1>ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\CL.exe /c /I/include /I"C:\Users\Owner\Documents\Programming\Libraries\BWAPI 3.7.4/include" /IC:\Users\Owner\Documents\Programming\Libraries\boost_1_56_0\ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D NOMINMAX /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc90.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\Hash.cpp ..\source\Logger.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\WeaponProperties.cpp ..\source\glfont\glfont.cc
+         glfont.cc
+         WeaponProperties.cpp
+         UnitScriptData.cpp
+         UnitProperties.cpp
+         Unit.cpp
+         UCTSearch.cpp
+         TranspositionTable.cpp
+         Timer.cpp
+         SparCraft.cpp
+         PortfolioGreedySearch.cpp
+         Player_UCT.cpp
+         Player_Random.cpp
+         Player_PortfolioGreedySearch.cpp
+         Player_NOKDPS.cpp
+         Player_Kiter_NOKDPS.cpp
+         Player_KiterDPS.cpp
+         Player_Kiter.cpp
+         Player_Cluster.cpp
+         Player_AttackWeakest.cpp
+         Player_AttackDPS.cpp
+         Generating Code...
+         Compiling...
+         Player_AttackClosest.cpp
+         Player_AlphaBeta.cpp
+         PlayerProperties.cpp
+         Player.cpp
+         MoveArray.cpp
+         Logger.cpp
+         Hash.cpp
+         GameState.cpp
+         Game.cpp
+         EnumData.cpp
+         Display.cpp
+         Common.cpp
+         AnimationFrameData.cpp
+         AlphaBetaSearch.cpp
+         AllPlayers.cpp
+         Generating Code...
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\Lib.exe /OUT:"C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\Debug\SparCraft.lib" /NOLOGO Debug\AllPlayers.obj
+         Debug\AlphaBetaSearch.obj
+         Debug\AnimationFrameData.obj
+         Debug\Common.obj
+         Debug\Display.obj
+         Debug\EnumData.obj
+         Debug\Game.obj
+         Debug\GameState.obj
+         Debug\glfont.obj
+         Debug\Hash.obj
+         Debug\Logger.obj
+         Debug\MoveArray.obj
+         Debug\Player.obj
+         Debug\PlayerProperties.obj
+         Debug\Player_AlphaBeta.obj
+         Debug\Player_AttackClosest.obj
+         Debug\Player_AttackDPS.obj
+         Debug\Player_AttackWeakest.obj
+         Debug\Player_Cluster.obj
+         Debug\Player_Kiter.obj
+         Debug\Player_KiterDPS.obj
+         Debug\Player_Kiter_NOKDPS.obj
+         Debug\Player_NOKDPS.obj
+         Debug\Player_PortfolioGreedySearch.obj
+         Debug\Player_Random.obj
+         Debug\Player_UCT.obj
+         Debug\PortfolioGreedySearch.obj
+         Debug\SparCraft.obj
+         Debug\Timer.obj
+         Debug\TranspositionTable.obj
+         Debug\UCTSearch.obj
+         Debug\Unit.obj
+         Debug\UnitProperties.obj
+         Debug\UnitScriptData.obj
+         Debug\WeaponProperties.obj
+     1>glfont.obj : warning LNK4221: no public symbols found; archive member will be inaccessible
+     1>Display.obj : warning LNK4221: no public symbols found; archive member will be inaccessible
          SparCraft.vcxproj -> C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\UAlbertaBot\VisualStudio\Debug\SparCraft.lib
      1>Done Building Project "C:\Users\Owner\Documents\GitHub\BornToWinBot\UAlbertaBot\src\SparCraft\VisualStudio\SparCraft.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.15
+Time Elapsed 00:01:07.80
